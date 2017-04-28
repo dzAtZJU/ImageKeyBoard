@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FC0AA2711EB174160084F96B"
-               BuildableName = "EmojiSwiper.app"
-               BlueprintName = "EmojiSwiper"
+               BlueprintIdentifier = "FC0AA28E1EB174600084F96B"
+               BuildableName = "EmojiSwiperKit.framework"
+               BlueprintName = "EmojiSwiperKit"
                ReferencedContainer = "container:EmojiSwiper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FC0AA2711EB174160084F96B"
-            BuildableName = "EmojiSwiper.app"
-            BlueprintName = "EmojiSwiper"
-            ReferencedContainer = "container:EmojiSwiper.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FC0AA2711EB174160084F96B"
-            BuildableName = "EmojiSwiper.app"
-            BlueprintName = "EmojiSwiper"
+            BlueprintIdentifier = "FC0AA28E1EB174600084F96B"
+            BuildableName = "EmojiSwiperKit.framework"
+            BlueprintName = "EmojiSwiperKit"
             ReferencedContainer = "container:EmojiSwiper.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FC0AA2711EB174160084F96B"
-            BuildableName = "EmojiSwiper.app"
-            BlueprintName = "EmojiSwiper"
+            BlueprintIdentifier = "FC0AA28E1EB174600084F96B"
+            BuildableName = "EmojiSwiperKit.framework"
+            BlueprintName = "EmojiSwiperKit"
             ReferencedContainer = "container:EmojiSwiper.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

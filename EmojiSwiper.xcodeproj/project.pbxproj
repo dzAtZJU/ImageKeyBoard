@@ -9,25 +9,122 @@
 /* Begin PBXBuildFile section */
 		FC0AA2761EB174160084F96B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2751EB174160084F96B /* AppDelegate.swift */; };
 		FC0AA2781EB174160084F96B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2771EB174160084F96B /* ViewController.swift */; };
-		FC0AA27B1EB174160084F96B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0AA2791EB174160084F96B /* Main.storyboard */; };
-		FC0AA27E1EB174160084F96B /* EmojiSwiper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA27C1EB174160084F96B /* EmojiSwiper.xcdatamodeld */; };
-		FC0AA2801EB174160084F96B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC0AA27F1EB174160084F96B /* Assets.xcassets */; };
 		FC0AA2831EB174160084F96B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0AA2811EB174160084F96B /* LaunchScreen.storyboard */; };
+		FC0AA2931EB174600084F96B /* EmojiSwiperKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FC0AA2911EB174600084F96B /* EmojiSwiperKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FC0AA2961EB174600084F96B /* EmojiSwiperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0AA28F1EB174600084F96B /* EmojiSwiperKit.framework */; };
+		FC0AA2971EB174600084F96B /* EmojiSwiperKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC0AA28F1EB174600084F96B /* EmojiSwiperKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC0AA2A11EB1748B0084F96B /* CollectionViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0AA29E1EB1748B0084F96B /* CollectionViewImageCell.xib */; };
+		FC0AA2A21EB1748B0084F96B /* CollectionViewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA29F1EB1748B0084F96B /* CollectionViewImageCell.swift */; };
+		FC0AA2A51EB174F10084F96B /* EmojisDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2A31EB174F10084F96B /* EmojisDataModel.swift */; };
+		FC0AA2A61EB174F10084F96B /* EmoerDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2A41EB174F10084F96B /* EmoerDataBase.swift */; };
+		FC0AA2A81EB176460084F96B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0AA2A71EB176460084F96B /* Main.storyboard */; };
+		FC0AA2AA1EB1765F0084F96B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC0AA2A91EB1765F0084F96B /* Assets.xcassets */; };
+		FC0AA2B21EB176F50084F96B /* EmojisGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2AB1EB176F50084F96B /* EmojisGroupViewController.swift */; };
+		FC0AA2B31EB176F50084F96B /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0AA2AC1EB176F50084F96B /* ImageCollectionViewCell.xib */; };
+		FC0AA2B41EB176F50084F96B /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2AD1EB176F50084F96B /* ImageCollectionViewCell.swift */; };
+		FC0AA2B51EB176F50084F96B /* CameraRollPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2AE1EB176F50084F96B /* CameraRollPhotosViewController.swift */; };
+		FC0AA2B61EB176F50084F96B /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2AF1EB176F50084F96B /* MyPageViewController.swift */; };
+		FC0AA2B71EB176F50084F96B /* PhotosDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2B01EB176F50084F96B /* PhotosDataModel.swift */; };
+		FC0AA2B81EB176F50084F96B /* EmojiGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2B11EB176F50084F96B /* EmojiGroupCell.swift */; };
+		FCA4AE0C1EB383C2001BEF35 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4AE0B1EB383C2001BEF35 /* KeyboardViewController.swift */; };
+		FCA4AE101EB383C2001BEF35 /* MyBoard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FCA4AE091EB383C2001BEF35 /* MyBoard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FCD824421EB39C7C00808A27 /* EmojisPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4AE011EB36514001BEF35 /* EmojisPicker.swift */; };
+		FCD824441EB39EE000808A27 /* MyKeyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCD824431EB39EE000808A27 /* MyKeyboard.storyboard */; };
+		FCDF2B711EB1866700F9B79B /* EmojiSwiper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCDF2B6F1EB1866700F9B79B /* EmojiSwiper.xcdatamodeld */; };
+		FCDF2B721EB1878A00F9B79B /* EmojiSwiper.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = FCDF2B6F1EB1866700F9B79B /* EmojiSwiper.xcdatamodeld */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FC0AA2941EB174600084F96B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC0AA26A1EB174160084F96B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC0AA28E1EB174600084F96B;
+			remoteInfo = EmojiSwiperKit;
+		};
+		FCA4AE0E1EB383C2001BEF35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC0AA26A1EB174160084F96B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCA4AE081EB383C2001BEF35;
+			remoteInfo = MyBoard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FC0AA29B1EB174610084F96B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FC0AA2971EB174600084F96B /* EmojiSwiperKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC0AA2C91EB179FE0084F96B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FCA4AE101EB383C2001BEF35 /* MyBoard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FC0AA2721EB174160084F96B /* EmojiSwiper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiSwiper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC0AA2751EB174160084F96B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC0AA2771EB174160084F96B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FC0AA27A1EB174160084F96B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FC0AA27D1EB174160084F96B /* EmojiSwiper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EmojiSwiper.xcdatamodel; sourceTree = "<group>"; };
-		FC0AA27F1EB174160084F96B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC0AA2821EB174160084F96B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC0AA2841EB174160084F96B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC0AA28F1EB174600084F96B /* EmojiSwiperKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EmojiSwiperKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC0AA2911EB174600084F96B /* EmojiSwiperKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmojiSwiperKit.h; sourceTree = "<group>"; };
+		FC0AA2921EB174600084F96B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC0AA29E1EB1748B0084F96B /* CollectionViewImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewImageCell.xib; sourceTree = "<group>"; };
+		FC0AA29F1EB1748B0084F96B /* CollectionViewImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewImageCell.swift; sourceTree = "<group>"; };
+		FC0AA2A31EB174F10084F96B /* EmojisDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojisDataModel.swift; sourceTree = "<group>"; };
+		FC0AA2A41EB174F10084F96B /* EmoerDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoerDataBase.swift; sourceTree = "<group>"; };
+		FC0AA2A71EB176460084F96B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FC0AA2A91EB1765F0084F96B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FC0AA2AB1EB176F50084F96B /* EmojisGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojisGroupViewController.swift; sourceTree = "<group>"; };
+		FC0AA2AC1EB176F50084F96B /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		FC0AA2AD1EB176F50084F96B /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC0AA2AE1EB176F50084F96B /* CameraRollPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRollPhotosViewController.swift; sourceTree = "<group>"; };
+		FC0AA2AF1EB176F50084F96B /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		FC0AA2B01EB176F50084F96B /* PhotosDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosDataModel.swift; sourceTree = "<group>"; };
+		FC0AA2B11EB176F50084F96B /* EmojiGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiGroupCell.swift; sourceTree = "<group>"; };
+		FC0AA2B91EB178240084F96B /* EmojiSwiper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EmojiSwiper.entitlements; sourceTree = "<group>"; };
+		FCA4AE011EB36514001BEF35 /* EmojisPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmojisPicker.swift; path = ../MyEmojiKeyboard/EmojisPicker.swift; sourceTree = "<group>"; };
+		FCA4AE091EB383C2001BEF35 /* MyBoard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyBoard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA4AE0B1EB383C2001BEF35 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		FCA4AE0D1EB383C2001BEF35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCD8243E1EB3994700808A27 /* MyBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyBoard.entitlements; sourceTree = "<group>"; };
+		FCD824431EB39EE000808A27 /* MyKeyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyKeyboard.storyboard; sourceTree = "<group>"; };
+		FCDF2B701EB1866700F9B79B /* EmojiSwiper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EmojiSwiper.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		FC0AA26F1EB174160084F96B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC0AA2961EB174600084F96B /* EmojiSwiperKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC0AA28B1EB174600084F96B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA4AE061EB383C2001BEF35 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				FC0AA2741EB174160084F96B /* EmojiSwiper */,
+				FC0AA2901EB174600084F96B /* EmojiSwiperKit */,
+				FCA4AE0A1EB383C2001BEF35 /* MyBoard */,
 				FC0AA2731EB174160084F96B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				FC0AA2721EB174160084F96B /* EmojiSwiper.app */,
+				FC0AA28F1EB174600084F96B /* EmojiSwiperKit.framework */,
+				FCA4AE091EB383C2001BEF35 /* MyBoard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,18 +157,62 @@
 		FC0AA2741EB174160084F96B /* EmojiSwiper */ = {
 			isa = PBXGroup;
 			children = (
+				FCDF2B6F1EB1866700F9B79B /* EmojiSwiper.xcdatamodeld */,
+				FC0AA2B91EB178240084F96B /* EmojiSwiper.entitlements */,
+				FC0AA2AB1EB176F50084F96B /* EmojisGroupViewController.swift */,
+				FC0AA2AC1EB176F50084F96B /* ImageCollectionViewCell.xib */,
+				FC0AA2AD1EB176F50084F96B /* ImageCollectionViewCell.swift */,
+				FC0AA2AE1EB176F50084F96B /* CameraRollPhotosViewController.swift */,
+				FC0AA2AF1EB176F50084F96B /* MyPageViewController.swift */,
+				FC0AA2B01EB176F50084F96B /* PhotosDataModel.swift */,
+				FC0AA2B11EB176F50084F96B /* EmojiGroupCell.swift */,
 				FC0AA2751EB174160084F96B /* AppDelegate.swift */,
 				FC0AA2771EB174160084F96B /* ViewController.swift */,
-				FC0AA2791EB174160084F96B /* Main.storyboard */,
-				FC0AA27F1EB174160084F96B /* Assets.xcassets */,
 				FC0AA2811EB174160084F96B /* LaunchScreen.storyboard */,
+				FC0AA2A91EB1765F0084F96B /* Assets.xcassets */,
+				FC0AA2A71EB176460084F96B /* Main.storyboard */,
 				FC0AA2841EB174160084F96B /* Info.plist */,
-				FC0AA27C1EB174160084F96B /* EmojiSwiper.xcdatamodeld */,
 			);
 			path = EmojiSwiper;
 			sourceTree = "<group>";
 		};
+		FC0AA2901EB174600084F96B /* EmojiSwiperKit */ = {
+			isa = PBXGroup;
+			children = (
+				FC0AA2A31EB174F10084F96B /* EmojisDataModel.swift */,
+				FC0AA2A41EB174F10084F96B /* EmoerDataBase.swift */,
+				FC0AA29E1EB1748B0084F96B /* CollectionViewImageCell.xib */,
+				FC0AA29F1EB1748B0084F96B /* CollectionViewImageCell.swift */,
+				FC0AA2911EB174600084F96B /* EmojiSwiperKit.h */,
+				FC0AA2921EB174600084F96B /* Info.plist */,
+			);
+			path = EmojiSwiperKit;
+			sourceTree = "<group>";
+		};
+		FCA4AE0A1EB383C2001BEF35 /* MyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				FCA4AE0B1EB383C2001BEF35 /* KeyboardViewController.swift */,
+				FCD824431EB39EE000808A27 /* MyKeyboard.storyboard */,
+				FCA4AE011EB36514001BEF35 /* EmojisPicker.swift */,
+				FCD8243E1EB3994700808A27 /* MyBoard.entitlements */,
+				FCA4AE0D1EB383C2001BEF35 /* Info.plist */,
+			);
+			path = MyBoard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FC0AA28C1EB174600084F96B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC0AA2931EB174600084F96B /* EmojiSwiperKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		FC0AA2711EB174160084F96B /* EmojiSwiper */ = {
@@ -77,15 +222,54 @@
 				FC0AA26E1EB174160084F96B /* Sources */,
 				FC0AA26F1EB174160084F96B /* Frameworks */,
 				FC0AA2701EB174160084F96B /* Resources */,
+				FC0AA29B1EB174610084F96B /* Embed Frameworks */,
+				FC0AA2C91EB179FE0084F96B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FC0AA2951EB174600084F96B /* PBXTargetDependency */,
+				FCA4AE0F1EB383C2001BEF35 /* PBXTargetDependency */,
 			);
 			name = EmojiSwiper;
 			productName = EmojiSwiper;
 			productReference = FC0AA2721EB174160084F96B /* EmojiSwiper.app */;
 			productType = "com.apple.product-type.application";
+		};
+		FC0AA28E1EB174600084F96B /* EmojiSwiperKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC0AA2981EB174610084F96B /* Build configuration list for PBXNativeTarget "EmojiSwiperKit" */;
+			buildPhases = (
+				FC0AA28A1EB174600084F96B /* Sources */,
+				FC0AA28B1EB174600084F96B /* Frameworks */,
+				FC0AA28C1EB174600084F96B /* Headers */,
+				FC0AA28D1EB174600084F96B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EmojiSwiperKit;
+			productName = EmojiSwiperKit;
+			productReference = FC0AA28F1EB174600084F96B /* EmojiSwiperKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FCA4AE081EB383C2001BEF35 /* MyBoard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCA4AE111EB383C2001BEF35 /* Build configuration list for PBXNativeTarget "MyBoard" */;
+			buildPhases = (
+				FCA4AE051EB383C2001BEF35 /* Sources */,
+				FCA4AE061EB383C2001BEF35 /* Frameworks */,
+				FCA4AE071EB383C2001BEF35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyBoard;
+			productName = MyBoard;
+			productReference = FCA4AE091EB383C2001BEF35 /* MyBoard.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -101,6 +285,27 @@
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = HTG5RPJ6QF;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					FC0AA28E1EB174600084F96B = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = HTG5RPJ6QF;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
+					FCA4AE081EB383C2001BEF35 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = HTG5RPJ6QF;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -118,6 +323,8 @@
 			projectRoot = "";
 			targets = (
 				FC0AA2711EB174160084F96B /* EmojiSwiper */,
+				FC0AA28E1EB174600084F96B /* EmojiSwiperKit */,
+				FCA4AE081EB383C2001BEF35 /* MyBoard */,
 			);
 		};
 /* End PBXProject section */
@@ -127,9 +334,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCDF2B721EB1878A00F9B79B /* EmojiSwiper.xcdatamodeld in Resources */,
 				FC0AA2831EB174160084F96B /* LaunchScreen.storyboard in Resources */,
-				FC0AA2801EB174160084F96B /* Assets.xcassets in Resources */,
-				FC0AA27B1EB174160084F96B /* Main.storyboard in Resources */,
+				FC0AA2AA1EB1765F0084F96B /* Assets.xcassets in Resources */,
+				FC0AA2B31EB176F50084F96B /* ImageCollectionViewCell.xib in Resources */,
+				FC0AA2A81EB176460084F96B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC0AA28D1EB174600084F96B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC0AA2A11EB1748B0084F96B /* CollectionViewImageCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA4AE071EB383C2001BEF35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCD824441EB39EE000808A27 /* MyKeyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,23 +365,53 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC0AA2B71EB176F50084F96B /* PhotosDataModel.swift in Sources */,
 				FC0AA2781EB174160084F96B /* ViewController.swift in Sources */,
-				FC0AA27E1EB174160084F96B /* EmojiSwiper.xcdatamodeld in Sources */,
+				FC0AA2B51EB176F50084F96B /* CameraRollPhotosViewController.swift in Sources */,
+				FC0AA2B61EB176F50084F96B /* MyPageViewController.swift in Sources */,
+				FC0AA2B81EB176F50084F96B /* EmojiGroupCell.swift in Sources */,
+				FC0AA2B41EB176F50084F96B /* ImageCollectionViewCell.swift in Sources */,
+				FC0AA2B21EB176F50084F96B /* EmojisGroupViewController.swift in Sources */,
 				FC0AA2761EB174160084F96B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC0AA28A1EB174600084F96B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC0AA2A21EB1748B0084F96B /* CollectionViewImageCell.swift in Sources */,
+				FC0AA2A51EB174F10084F96B /* EmojisDataModel.swift in Sources */,
+				FCDF2B711EB1866700F9B79B /* EmojiSwiper.xcdatamodeld in Sources */,
+				FC0AA2A61EB174F10084F96B /* EmoerDataBase.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA4AE051EB383C2001BEF35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCD824421EB39C7C00808A27 /* EmojisPicker.swift in Sources */,
+				FCA4AE0C1EB383C2001BEF35 /* KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		FC0AA2791EB174160084F96B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FC0AA27A1EB174160084F96B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		FC0AA2951EB174600084F96B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC0AA28E1EB174600084F96B /* EmojiSwiperKit */;
+			targetProxy = FC0AA2941EB174600084F96B /* PBXContainerItemProxy */;
 		};
+		FCA4AE0F1EB383C2001BEF35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FCA4AE081EB383C2001BEF35 /* MyBoard */;
+			targetProxy = FCA4AE0E1EB383C2001BEF35 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
 		FC0AA2811EB174160084F96B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -264,7 +519,9 @@
 		FC0AA2881EB174160084F96B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EmojiSwiper/EmojiSwiper.entitlements;
 				DEVELOPMENT_TEAM = HTG5RPJ6QF;
 				INFOPLIST_FILE = EmojiSwiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -277,12 +534,91 @@
 		FC0AA2891EB174160084F96B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EmojiSwiper/EmojiSwiper.entitlements;
 				DEVELOPMENT_TEAM = HTG5RPJ6QF;
 				INFOPLIST_FILE = EmojiSwiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-120102776-zju.edu.cn.EmojiSwiper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		FC0AA2991EB174610084F96B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HTG5RPJ6QF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = EmojiSwiperKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-120102776-zju.edu.cn.EmojiSwiperKit";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FC0AA29A1EB174610084F96B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HTG5RPJ6QF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = EmojiSwiperKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-120102776-zju.edu.cn.EmojiSwiperKit";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FCA4AE121EB383C2001BEF35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MyBoard/MyBoard.entitlements;
+				DEVELOPMENT_TEAM = HTG5RPJ6QF;
+				INFOPLIST_FILE = MyBoard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-120102776-zju.edu.cn.EmojiSwiper.MyBoard";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		FCA4AE131EB383C2001BEF35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MyBoard/MyBoard.entitlements;
+				DEVELOPMENT_TEAM = HTG5RPJ6QF;
+				INFOPLIST_FILE = MyBoard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-120102776-zju.edu.cn.EmojiSwiper.MyBoard";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -306,18 +642,38 @@
 				FC0AA2891EB174160084F96B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC0AA2981EB174610084F96B /* Build configuration list for PBXNativeTarget "EmojiSwiperKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC0AA2991EB174610084F96B /* Debug */,
+				FC0AA29A1EB174610084F96B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCA4AE111EB383C2001BEF35 /* Build configuration list for PBXNativeTarget "MyBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCA4AE121EB383C2001BEF35 /* Debug */,
+				FCA4AE131EB383C2001BEF35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FC0AA27C1EB174160084F96B /* EmojiSwiper.xcdatamodeld */ = {
+		FCDF2B6F1EB1866700F9B79B /* EmojiSwiper.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FC0AA27D1EB174160084F96B /* EmojiSwiper.xcdatamodel */,
+				FCDF2B701EB1866700F9B79B /* EmojiSwiper.xcdatamodel */,
 			);
-			currentVersion = FC0AA27D1EB174160084F96B /* EmojiSwiper.xcdatamodel */;
-			path = EmojiSwiper.xcdatamodeld;
-			sourceTree = "<group>";
+			currentVersion = FCDF2B701EB1866700F9B79B /* EmojiSwiper.xcdatamodel */;
+			name = EmojiSwiper.xcdatamodeld;
+			path = EmojiSwiperKit/EmojiSwiper.xcdatamodeld;
+			sourceTree = SOURCE_ROOT;
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */

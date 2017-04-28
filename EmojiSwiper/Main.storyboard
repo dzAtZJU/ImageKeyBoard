@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Emoer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="J0C-KC-IRp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="l4d-0m-b5T">
+                                    <size key="itemSize" width="183" height="183"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="50" height="50"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emojiGroupCell" id="veY-BW-hgW" customClass="EmojiGroupCell" customModule="Emoer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="183" height="183"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="183" height="183"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <segue destination="vL4-hE-P5X" kind="presentation" id="1ak-jM-tsp"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="header" id="4lR-Np-El0">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="footer" id="YEU-Ln-Vc7">
+                                    <rect key="frame" x="0.0" y="233" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4f2-VC-ito">
+                                <rect key="frame" x="147" y="617" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="New Group"/>
+                                <connections>
+                                    <action selector="newGroup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4yW-sp-IWl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="JEn-lZ-GTd" appends="YES" id="7u0-c6-aOF"/>
+                            <outletCollection property="gestureRecognizers" destination="p37-Yg-8ae" appends="YES" id="CYC-km-LrX"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="emojiGroupsView" destination="J0C-KC-IRp" id="UeN-WE-Ype"/>
+                        <outlet property="panGestRecog" destination="JEn-lZ-GTd" id="wNP-lC-RL5"/>
+                        <outlet property="swipLeft" destination="p37-Yg-8ae" id="qRf-f5-cQd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="JEn-lZ-GTd">
+                    <connections>
+                        <action selector="moveGroup:" destination="BYZ-38-t0r" id="iwM-Hm-FoY"/>
+                    </connections>
+                </panGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="p37-Yg-8ae">
+                    <connections>
+                        <action selector="deleteGroup:" destination="BYZ-38-t0r" id="kfV-H6-hJ5"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+        </scene>
+        <!--Camera Roll Photos View Controller-->
+        <scene sceneID="6s4-1g-U0d">
+            <objects>
+                <collectionViewController id="iBV-c9-UJp" customClass="CameraRollPhotosViewController" customModule="Emoer" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="oMS-Zs-79r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="c7s-Ox-Jvu">
+                            <size key="itemSize" width="122" height="130"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="N23-Ke-BMe" customClass="ImageCollectionViewCell" customModule="Emoer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="122" height="130"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="122" height="130"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="jNk-7M-1Ms" appends="YES" id="LCQ-M1-dpP"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="iBV-c9-UJp" id="h9O-sw-iZc"/>
+                            <outlet property="delegate" destination="iBV-c9-UJp" id="3J4-Nf-BJ8"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZyP-P4-iIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="jNk-7M-1Ms">
+                    <connections>
+                        <action selector="swipeBack:" destination="iBV-c9-UJp" id="jhy-8t-rhn"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1876" y="929.68515742128943"/>
+        </scene>
+        <!--Emojis Group View Controller-->
+        <scene sceneID="gvh-mQ-77T">
+            <objects>
+                <viewController storyboardIdentifier="emojisGroupView" id="A8W-nz-Cyl" customClass="EmojisGroupViewController" customModule="Emoer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L9q-mi-HUG"/>
+                        <viewControllerLayoutGuide type="bottom" id="yhW-ii-cYV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VN4-2c-TAc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ipm-tu-dPY">
+                                <rect key="frame" x="0.0" y="78" width="375" height="589"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="XHR-ZW-opk">
+                                    <size key="itemSize" width="122" height="140"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emojiCell" id="anJ-J4-hEW" customClass="ImageCollectionViewCell" customModule="Emoer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="122" height="140"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="122" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="Group Tag" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ema-LA-ZYn">
+                                <rect key="frame" x="16" y="20" width="343" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Group Tag">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="30" name="Chalkduster"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="LP4-d6-P5x" appends="YES" id="BX5-fc-wrt"/>
+                            <outletCollection property="gestureRecognizers" destination="72c-Fr-Q3w" appends="YES" id="PZn-s0-NuJ"/>
+                            <outletCollection property="gestureRecognizers" destination="DBE-Bq-Efe" appends="YES" id="NYL-6S-Hsk"/>
+                            <outletCollection property="gestureRecognizers" destination="MQA-hC-WMZ" appends="YES" id="HP7-RV-8pj"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="emojisGroupView" destination="Ipm-tu-dPY" id="qu3-Hk-Uv9"/>
+                        <outlet property="groupNameField" destination="ema-LA-ZYn" id="9ap-bJ-1D6"/>
+                        <outlet property="panGestRecog" destination="72c-Fr-Q3w" id="vua-xi-mIS"/>
+                        <outlet property="swipeGestRecog" destination="LP4-d6-P5x" id="zpF-KC-Oxi"/>
+                        <outlet property="swipeLeft" destination="MQA-hC-WMZ" id="Tnv-bC-qtJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SWR-or-IPH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="LP4-d6-P5x">
+                    <connections>
+                        <action selector="swipeBack:" destination="A8W-nz-Cyl" id="7P9-tY-PyP"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="72c-Fr-Q3w">
+                    <connections>
+                        <action selector="moveEmoji:" destination="A8W-nz-Cyl" id="Sa9-aH-j8a"/>
+                    </connections>
+                </panGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="DBE-Bq-Efe">
+                    <connections>
+                        <action selector="doubleTap:" destination="A8W-nz-Cyl" id="e7o-Aw-C4z"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="MQA-hC-WMZ">
+                    <connections>
+                        <action selector="deleteEmoji:" destination="A8W-nz-Cyl" id="6cc-2y-reg"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="777" y="953"/>
+        </scene>
+        <!--Camera Roll Photos View Controller-->
+        <scene sceneID="6S6-zD-WyQ">
+            <objects>
+                <viewController id="vL4-hE-P5X" customClass="CameraRollPhotosViewController" customModule="Emoer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gG3-eJ-nMH"/>
+                        <viewControllerLayoutGuide type="bottom" id="CdQ-6W-eF9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RBK-N7-DpZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bYt-ts-u7v">
+                                <rect key="frame" x="0.0" y="85" width="375" height="582"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="wBJ-9B-aBx">
+                                    <size key="itemSize" width="122" height="122"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="Hw1-CO-kIk" customClass="ImageCollectionViewCell" customModule="Emoer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="122" height="122"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="122" height="122"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="fX3-uA-f0m" appends="YES" id="MOr-tl-IjX"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="bYt-ts-u7v" id="nsf-6I-1vu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wOF-0d-3xX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="fX3-uA-f0m">
+                    <connections>
+                        <action selector="swipeBack:" destination="vL4-hE-P5X" id="RWq-ct-m72"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1312.8" y="138.98050974512745"/>
+        </scene>
+    </scenes>
+</document>
