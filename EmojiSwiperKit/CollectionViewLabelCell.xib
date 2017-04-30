@@ -11,29 +11,31 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6QD-hL-geD" customClass="CollectionViewImageCell" customModule="EmojiSwiperKit" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SB4-XU-4Mv" customClass="CollectionViewLabelCell" customModule="EmojiSwiperKit" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UIY-Va-6kb">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8W-ne-xTN">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                    </imageView>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="UIY-Va-6kb" secondAttribute="trailing" id="40O-kM-PQO"/>
-                <constraint firstItem="UIY-Va-6kb" firstAttribute="leading" secondItem="6QD-hL-geD" secondAttribute="leading" id="U8U-F4-ksZ"/>
-                <constraint firstItem="UIY-Va-6kb" firstAttribute="top" secondItem="6QD-hL-geD" secondAttribute="top" id="g2S-jl-kda"/>
-                <constraint firstAttribute="bottom" secondItem="UIY-Va-6kb" secondAttribute="bottom" id="ws2-bp-q9x"/>
+                <constraint firstItem="R8W-ne-xTN" firstAttribute="top" secondItem="SB4-XU-4Mv" secondAttribute="top" id="3TJ-dx-WnG"/>
+                <constraint firstAttribute="trailing" secondItem="R8W-ne-xTN" secondAttribute="trailing" id="ijd-k2-kO0"/>
+                <constraint firstAttribute="bottom" secondItem="R8W-ne-xTN" secondAttribute="bottom" id="qAl-z9-4zp"/>
+                <constraint firstItem="R8W-ne-xTN" firstAttribute="leading" secondItem="SB4-XU-4Mv" secondAttribute="leading" id="sec-A8-XIY"/>
             </constraints>
-            <size key="customSize" width="46" height="73"/>
             <connections>
-                <outlet property="imageView" destination="UIY-Va-6kb" id="vVc-sI-v5Q"/>
+                <outlet property="label" destination="R8W-ne-xTN" id="1iJ-hM-usq"/>
             </connections>
-            <point key="canvasLocation" x="168" y="2"/>
+            <point key="canvasLocation" x="0.0" y="33"/>
         </collectionViewCell>
     </objects>
 </document>

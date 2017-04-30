@@ -7,16 +7,30 @@
 //
 
 import UIKit
+import EmojiSwiperKit
 
-class KeyboardViewController: UIInputViewController {
+class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    // View
     @IBOutlet var nextKeyboardButton: UIButton!
+    @IBOutlet weak var emojisShower: UICollectionView!
+    @IBOutlet weak var groupsShower: UICollectionView!
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
         
         // Add custom view sizing constraints here
     }
+    
+    // Model
+    let emojisDataModel = EmojisDataModel.readEmojisDataModel()
+     /*
+    var emojiGroups: [EmojiGroupMO] {
+        get {
+            return emojisDataModel.getAllGroups()
+        }
+    }
+ */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +48,9 @@ class KeyboardViewController: UIInputViewController {
         
         self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        emojisShower.dataSource = self
+        groupsShower.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,5 +74,37 @@ class KeyboardViewController: UIInputViewController {
         }
         self.nextKeyboardButton.setTitleColor(textColor, for: [])
     }
-
+    
+    // <UICollectionViewDataSource>
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if collectionView==emojisShower {
+                return 1
+        }
+        else {
+            return 1
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView==emojisShower {
+            return 3
+        }
+        else {
+            return 3
+            //return emojiGroups.count
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView==emojisShower {
+            let cell = emojisShower.dequeueReusableCell(withReuseIdentifier: "emojiCell", for: indexPath) as! CollectionViewImageCell
+            return cell
+        }
+        else {
+            let cell = groupsShower.dequeueReusableCell(withReuseIdentifier: "groupCell", for: indexPath) as! CollectionViewLabelCell
+            //let groupName = emojiGroups[indexPath.row].tag
+            //cell.setText(groupName)
+            return cell
+        }
+    }
 }

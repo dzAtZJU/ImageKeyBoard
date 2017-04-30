@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 public class CollectionViewImageCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     

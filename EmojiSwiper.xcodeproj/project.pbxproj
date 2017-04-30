@@ -28,8 +28,12 @@
 		FC0AA2B81EB176F50084F96B /* EmojiGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2B11EB176F50084F96B /* EmojiGroupCell.swift */; };
 		FCA4AE0C1EB383C2001BEF35 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4AE0B1EB383C2001BEF35 /* KeyboardViewController.swift */; };
 		FCA4AE101EB383C2001BEF35 /* MyBoard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FCA4AE091EB383C2001BEF35 /* MyBoard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		FCD824421EB39C7C00808A27 /* EmojisPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4AE011EB36514001BEF35 /* EmojisPicker.swift */; };
 		FCD824441EB39EE000808A27 /* MyKeyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCD824431EB39EE000808A27 /* MyKeyboard.storyboard */; };
+		FCD824461EB4665F00808A27 /* EmojisPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD824451EB4665F00808A27 /* EmojisPicker.swift */; };
+		FCD8244E1EB4852900808A27 /* CollectionViewLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD8244D1EB4852900808A27 /* CollectionViewLabelCell.swift */; };
+		FCD824501EB4853600808A27 /* CollectionViewLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD8244F1EB4853600808A27 /* CollectionViewLabelCell.xib */; };
+		FCD824511EB4891000808A27 /* EmojiSwiperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0AA28F1EB174600084F96B /* EmojiSwiperKit.framework */; };
+		FCD824541EB48F4E00808A27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC0AA2A91EB1765F0084F96B /* Assets.xcassets */; };
 		FCDF2B711EB1866700F9B79B /* EmojiSwiper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCDF2B6F1EB1866700F9B79B /* EmojiSwiper.xcdatamodeld */; };
 		FCDF2B721EB1878A00F9B79B /* EmojiSwiper.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = FCDF2B6F1EB1866700F9B79B /* EmojiSwiper.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -48,6 +52,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = FCA4AE081EB383C2001BEF35;
 			remoteInfo = MyBoard;
+		};
+		FCD824521EB4891400808A27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC0AA26A1EB174160084F96B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC0AA28E1EB174600084F96B;
+			remoteInfo = EmojiSwiperKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -99,12 +110,14 @@
 		FC0AA2B01EB176F50084F96B /* PhotosDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosDataModel.swift; sourceTree = "<group>"; };
 		FC0AA2B11EB176F50084F96B /* EmojiGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiGroupCell.swift; sourceTree = "<group>"; };
 		FC0AA2B91EB178240084F96B /* EmojiSwiper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EmojiSwiper.entitlements; sourceTree = "<group>"; };
-		FCA4AE011EB36514001BEF35 /* EmojisPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmojisPicker.swift; path = ../MyEmojiKeyboard/EmojisPicker.swift; sourceTree = "<group>"; };
 		FCA4AE091EB383C2001BEF35 /* MyBoard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyBoard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA4AE0B1EB383C2001BEF35 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		FCA4AE0D1EB383C2001BEF35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCD8243E1EB3994700808A27 /* MyBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyBoard.entitlements; sourceTree = "<group>"; };
 		FCD824431EB39EE000808A27 /* MyKeyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyKeyboard.storyboard; sourceTree = "<group>"; };
+		FCD824451EB4665F00808A27 /* EmojisPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojisPicker.swift; sourceTree = "<group>"; };
+		FCD8244D1EB4852900808A27 /* CollectionViewLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLabelCell.swift; sourceTree = "<group>"; };
+		FCD8244F1EB4853600808A27 /* CollectionViewLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewLabelCell.xib; sourceTree = "<group>"; };
 		FCDF2B701EB1866700F9B79B /* EmojiSwiper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EmojiSwiper.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCD824511EB4891000808A27 /* EmojiSwiperKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +199,8 @@
 				FC0AA29F1EB1748B0084F96B /* CollectionViewImageCell.swift */,
 				FC0AA2911EB174600084F96B /* EmojiSwiperKit.h */,
 				FC0AA2921EB174600084F96B /* Info.plist */,
+				FCD8244D1EB4852900808A27 /* CollectionViewLabelCell.swift */,
+				FCD8244F1EB4853600808A27 /* CollectionViewLabelCell.xib */,
 			);
 			path = EmojiSwiperKit;
 			sourceTree = "<group>";
@@ -192,9 +208,9 @@
 		FCA4AE0A1EB383C2001BEF35 /* MyBoard */ = {
 			isa = PBXGroup;
 			children = (
+				FCD824451EB4665F00808A27 /* EmojisPicker.swift */,
 				FCA4AE0B1EB383C2001BEF35 /* KeyboardViewController.swift */,
 				FCD824431EB39EE000808A27 /* MyKeyboard.storyboard */,
-				FCA4AE011EB36514001BEF35 /* EmojisPicker.swift */,
 				FCD8243E1EB3994700808A27 /* MyBoard.entitlements */,
 				FCA4AE0D1EB383C2001BEF35 /* Info.plist */,
 			);
@@ -265,6 +281,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FCD824531EB4891400808A27 /* PBXTargetDependency */,
 			);
 			name = MyBoard;
 			productName = MyBoard;
@@ -347,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC0AA2A11EB1748B0084F96B /* CollectionViewImageCell.xib in Resources */,
+				FCD824501EB4853600808A27 /* CollectionViewLabelCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCD824541EB48F4E00808A27 /* Assets.xcassets in Resources */,
 				FCD824441EB39EE000808A27 /* MyKeyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,6 +403,7 @@
 				FC0AA2A51EB174F10084F96B /* EmojisDataModel.swift in Sources */,
 				FCDF2B711EB1866700F9B79B /* EmojiSwiper.xcdatamodeld in Sources */,
 				FC0AA2A61EB174F10084F96B /* EmoerDataBase.swift in Sources */,
+				FCD8244E1EB4852900808A27 /* CollectionViewLabelCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,8 +411,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCD824421EB39C7C00808A27 /* EmojisPicker.swift in Sources */,
 				FCA4AE0C1EB383C2001BEF35 /* KeyboardViewController.swift in Sources */,
+				FCD824461EB4665F00808A27 /* EmojisPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +428,11 @@
 			isa = PBXTargetDependency;
 			target = FCA4AE081EB383C2001BEF35 /* MyBoard */;
 			targetProxy = FCA4AE0E1EB383C2001BEF35 /* PBXContainerItemProxy */;
+		};
+		FCD824531EB4891400808A27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC0AA28E1EB174600084F96B /* EmojiSwiperKit */;
+			targetProxy = FCD824521EB4891400808A27 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -525,7 +550,7 @@
 				DEVELOPMENT_TEAM = HTG5RPJ6QF;
 				INFOPLIST_FILE = EmojiSwiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-120102776-zju.edu.cn.EmojiSwiper";
+				PRODUCT_BUNDLE_IDENTIFIER = ind.weiran3120102776.EmojiSwiper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -540,7 +565,7 @@
 				DEVELOPMENT_TEAM = HTG5RPJ6QF;
 				INFOPLIST_FILE = EmojiSwiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-120102776-zju.edu.cn.EmojiSwiper";
+				PRODUCT_BUNDLE_IDENTIFIER = ind.weiran3120102776.EmojiSwiper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -549,6 +574,7 @@
 		FC0AA2991EB174610084F96B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -560,7 +586,7 @@
 				INFOPLIST_FILE = EmojiSwiperKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-120102776-zju.edu.cn.EmojiSwiperKit";
+				PRODUCT_BUNDLE_IDENTIFIER = ind.weiran3120102776.EmojiSwiperKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -574,6 +600,7 @@
 		FC0AA29A1EB174610084F96B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -585,7 +612,7 @@
 				INFOPLIST_FILE = EmojiSwiperKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-120102776-zju.edu.cn.EmojiSwiperKit";
+				PRODUCT_BUNDLE_IDENTIFIER = ind.weiran3120102776.EmojiSwiperKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -602,7 +629,7 @@
 				DEVELOPMENT_TEAM = HTG5RPJ6QF;
 				INFOPLIST_FILE = MyBoard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-120102776-zju.edu.cn.EmojiSwiper.MyBoard";
+				PRODUCT_BUNDLE_IDENTIFIER = ind.weiran3120102776.EmojiSwiper.MyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -616,7 +643,7 @@
 				DEVELOPMENT_TEAM = HTG5RPJ6QF;
 				INFOPLIST_FILE = MyBoard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-120102776-zju.edu.cn.EmojiSwiper.MyBoard";
+				PRODUCT_BUNDLE_IDENTIFIER = ind.weiran3120102776.EmojiSwiper.MyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
