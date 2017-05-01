@@ -8,7 +8,7 @@
     <entity name="EmojiGroup" representedClassName="EmojiGroupMO" syncable="YES" codeGenerationType="class">
         <attribute name="orderNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="tag" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="emojis" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Emoji" inverseName="group" inverseEntity="Emoji" syncable="YES"/>
+        <relationship name="emojis" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Emoji" inverseName="group" inverseEntity="Emoji" syncable="YES"/>
     </entity>
     <elements>
         <element name="Emoji" positionX="-45" positionY="0" width="128" height="90"/>

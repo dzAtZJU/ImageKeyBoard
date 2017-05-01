@@ -9,7 +9,7 @@
 import UIKit
 import EmojiSwiperKit
 
-class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
 
     // View
     @IBOutlet var nextKeyboardButton: UIButton!
@@ -24,33 +24,22 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     
     // Model
     let emojisDataModel = EmojisDataModel.readEmojisDataModel()
-     /*
-    var emojiGroups: [EmojiGroupMO] {
-        get {
-            return emojisDataModel.getAllGroups()
-        }
-    }
- */
+    
+    //System
+    let pasteBoard = UIPasteboard.general
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Perform custom UI setup here
-        self.nextKeyboardButton = UIButton(type: .system)
-        
-        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
-        self.nextKeyboardButton.sizeToFit()
-        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
+        emojisShower.dataSource = self
+        emojisShower.delegate = self
+        groupsShower.dataSource = self
+        groupsShower.delegate = self
+
+        emojisShower.register(UINib(nibName: "CollectionViewImageCell", bundle: Bundle(for: CollectionViewImageCell.self)), forCellWithReuseIdentifier: "emojiCell")
+        groupsShower.register(UINib(nibName: "CollectionViewLabelCell", bundle: Bundle(for: CollectionViewLabelCell.self)), forCellWithReuseIdentifier: "groupTagCell")
         
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        
-        self.view.addSubview(self.nextKeyboardButton)
-        
-        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        
-        emojisShower.dataSource = self
-        groupsShower.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,7 +67,8 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     // <UICollectionViewDataSource>
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if collectionView==emojisShower {
-                return 1
+            let n = emojisDataModel.emojiGroups.count
+                return n
         }
         else {
             return 1
@@ -87,24 +77,91 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView==emojisShower {
-            return 3
+            if let emos = emojisDataModel.emojiGroups[section].emojis {
+                let n = emos.count
+                return n
+            }
+            return 0
         }
         else {
-            return 3
-            //return emojiGroups.count
+            let n = emojisDataModel.emojiGroups.count
+            return n
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView==emojisShower {
             let cell = emojisShower.dequeueReusableCell(withReuseIdentifier: "emojiCell", for: indexPath) as! CollectionViewImageCell
+            let emojis = emojisDataModel.getEmojisInGroup(orderNumber: indexPath.section)
+            let emoji = emojis?[indexPath.row] as? EmojiMO
+            cell.setImage(imageData: emoji?.image as Data?)
             return cell
         }
         else {
-            let cell = groupsShower.dequeueReusableCell(withReuseIdentifier: "groupCell", for: indexPath) as! CollectionViewLabelCell
-            //let groupName = emojiGroups[indexPath.row].tag
-            //cell.setText(groupName)
+            let cell = groupsShower.dequeueReusableCell(withReuseIdentifier: "groupTagCell", for: indexPath) as! CollectionViewLabelCell
+            let group = emojisDataModel.emojiGroups[indexPath.row]
+            cell.setText(group.tag)
             return cell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        var cell = UICollectionReusableView()
+        if collectionView==emojisShower {
+            if kind==UICollectionElementKindSectionFooter {
+                cell = emojisShower.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "groupFooter", for: indexPath)
+            }
+        }
+        return cell
+    }
+    
+    // <UICollectionViewDelegate>
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView==emojisShower {
+            let cell = emojisShower.cellForItem(at: indexPath) as! CollectionViewImageCell
+            let image = cell.image
+            pasteBoard.image = image
+        }
+        else {
+            let indexPathForFirstEmoji = IndexPath(row: 0, section: indexPath.row)
+            emojisShower.scrollToItem(at: indexPathForFirstEmoji, at: UICollectionViewScrollPosition.left, animated: true)
+            groupsShower.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.left, animated: true)
+            let groupCell = groupsShower.cellForItem(at: indexPath) as! CollectionViewLabelCell
+            groupCell.animate(selected: true)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if collectionView==groupsShower {
+            let groupCell = groupsShower.cellForItem(at: indexPath) as! CollectionViewLabelCell
+            groupCell.animate(selected: false)
+        }
+    }
+    
+    /*
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        if collectionView==groupsShower {
+            let groupCell = groupsShower.cellForItem(at: indexPath) as! CollectionViewLabelCell
+            groupCell.animate(selected: true)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        if collectionView==groupsShower {
+            let groupCell = groupsShower.cellForItem(at: indexPath) as! CollectionViewLabelCell
+            groupCell.animate(selected: false)
+        }
+    }
+    */
+    
+    // <UIScrollViewDelegate>
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView==emojisShower {
+            if let indexPathOfFirstCell = emojisShower.indexPathsForVisibleItems.first {
+                groupsShower.scrollToItem(at: IndexPath(row: indexPathOfFirstCell.section, section: 0), at: UICollectionViewScrollPosition.left, animated: true)
+            }
+        }
+    }
+
+
 }

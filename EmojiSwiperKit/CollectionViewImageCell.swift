@@ -15,4 +15,14 @@ public class CollectionViewImageCell: UICollectionViewCell {
         self.imageView.image = image
     }
     
+    public func setImage(imageData: Data?) {
+        if let data = imageData {
+            self.setImage(UIImage(data: data))
+        }
+    }
+    
+    public var image: UIImage {
+        return imageView.image!
+    }
+    
 }

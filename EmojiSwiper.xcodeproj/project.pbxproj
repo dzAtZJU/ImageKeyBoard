@@ -26,6 +26,7 @@
 		FC0AA2B61EB176F50084F96B /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2AF1EB176F50084F96B /* MyPageViewController.swift */; };
 		FC0AA2B71EB176F50084F96B /* PhotosDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2B01EB176F50084F96B /* PhotosDataModel.swift */; };
 		FC0AA2B81EB176F50084F96B /* EmojiGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2B11EB176F50084F96B /* EmojiGroupCell.swift */; };
+		FC767B211EB6062B00B2A7A9 /* EmojiSwiper.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = FCDF2B6F1EB1866700F9B79B /* EmojiSwiper.xcdatamodeld */; };
 		FCA4AE0C1EB383C2001BEF35 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4AE0B1EB383C2001BEF35 /* KeyboardViewController.swift */; };
 		FCA4AE101EB383C2001BEF35 /* MyBoard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FCA4AE091EB383C2001BEF35 /* MyBoard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FCD824441EB39EE000808A27 /* MyKeyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCD824431EB39EE000808A27 /* MyKeyboard.storyboard */; };
@@ -372,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC767B211EB6062B00B2A7A9 /* EmojiSwiper.xcdatamodeld in Resources */,
 				FCD824541EB48F4E00808A27 /* Assets.xcassets in Resources */,
 				FCD824441EB39EE000808A27 /* MyKeyboard.storyboard in Resources */,
 			);

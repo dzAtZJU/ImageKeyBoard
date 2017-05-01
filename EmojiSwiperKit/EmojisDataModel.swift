@@ -18,11 +18,13 @@ public class EmojisDataModel {
     public init(context: NSManagedObjectContext) {
         managedObjectContext = context
         persistentContainer = nil
+        emojiGroups = fetchAllGroups()
     }
     
     public init(container: NSPersistentContainer) {
         persistentContainer = container
         managedObjectContext = persistentContainer!.viewContext
+        emojiGroups = fetchAllGroups()
     }
     
     public class func myEmojisDataModel() -> EmojisDataModel {
@@ -45,7 +47,8 @@ public class EmojisDataModel {
     
     public class func readEmojisDataModel() -> EmojisDataModel {
         let myUserDefaults = UserDefaults(suiteName: "group.ind.weiran3120102776.EmojiSwiper")
-        let applicationDocumentsDirectory = myUserDefaults?.object(forKey: "emojisDatabasePath") as! URL
+        let urlString = myUserDefaults?.object(forKey: "emojisDatabasePath") as! String
+        let applicationDocumentsDirectory = URL(fileURLWithPath: urlString)
         let storeDescription = NSPersistentStoreDescription(url: applicationDocumentsDirectory)
         storeDescription.isReadOnly = false
         let defaultContainer = NSPersistentContainer(name: "EmojiSwiper")
@@ -56,6 +59,21 @@ public class EmojisDataModel {
             }
         })
         return EmojisDataModel(container: defaultContainer)
+    }
+    
+    public var emojiGroups: [EmojiGroupMO]!
+    
+    public func saveContext () {
+        if managedObjectContext.hasChanges {
+            do {
+                try managedObjectContext.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     }
     
     public func addGroup(orderNumber: Int16) {
@@ -101,9 +119,9 @@ public class EmojisDataModel {
         managedObjectContext.delete(group)
     }
     
-    public func getEmojisInGroup(orderNumber: Int16) -> NSSet? {
-        let group = fetchGroupObject(orderNumber: orderNumber)
-        return group!.emojis;
+    public func getEmojisInGroup(orderNumber: Int) -> NSOrderedSet? {
+        let group = emojiGroups[orderNumber]
+        return group.emojis
     }
     
     // [TODO]: load index from persistent; save index to persistent; Better data structure

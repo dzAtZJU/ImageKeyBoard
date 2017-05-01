@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8W-ne-xTN">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8W-ne-xTN">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -26,6 +26,7 @@
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="0.15172838184931506" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="R8W-ne-xTN" firstAttribute="top" secondItem="SB4-XU-4Mv" secondAttribute="top" id="3TJ-dx-WnG"/>
                 <constraint firstAttribute="trailing" secondItem="R8W-ne-xTN" secondAttribute="trailing" id="ijd-k2-kO0"/>

@@ -14,4 +14,13 @@ public class CollectionViewLabelCell: UICollectionViewCell {
     public func setText(_ text: String?) {
         label.text = text
     }
+    
+    public func animate(selected: Bool) {
+        if selected {
+            self.backgroundColor = self.backgroundColor?.withAlphaComponent(0.3)
+        }
+        else {
+            self.backgroundColor = self.backgroundColor?.withAlphaComponent(0.15)
+        }
+    }
 }

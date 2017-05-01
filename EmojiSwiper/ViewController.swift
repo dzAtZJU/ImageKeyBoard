@@ -59,12 +59,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     //View -> Vontroller -> Model Information Flow
     var selectedGroupOrderNumber: Int16?
     
-    //View Controller Life Cycle
+    // View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         emojiGroupsView.delegate = self
         emojiGroupsView.dataSource = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        emojisDataModel.saveContext()
     }
     
     //
@@ -85,7 +90,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "emojiGroupCell", for: indexPath) as! EmojiGroupCell
-        let representativeEmoji = emojiGroups[indexPath.row].emojis?.anyObject() as? EmojiMO
+        let representativeEmoji = emojiGroups[indexPath.row].emojis?.lastObject as? EmojiMO
         if let imageData = representativeEmoji?.image {
             let image = UIImage(data: imageData as Data)
             cell.setImage(image!)
