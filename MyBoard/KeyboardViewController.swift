@@ -121,8 +121,6 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
             let cell = emojisShower.cellForItem(at: indexPath) as! CollectionViewImageCell
             let image = cell.image
             pasteBoard.image = image
-            
-            cell.animate(selected: true)
         }
         else {
             let indexPathForFirstEmoji = IndexPath(row: 0, section: indexPath.row)
@@ -136,8 +134,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView==emojisShower {
-            let emojiCell = emojisShower.cellForItem(at: indexPath) as! CollectionViewImageCell
-            emojiCell.animate(selected: false)
+
         }
         else {
             let groupCell = groupsShower.cellForItem(at: indexPath) as! CollectionViewLabelCell
@@ -145,21 +142,20 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         }
     }
     
-    /*
+    
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        if collectionView==groupsShower {
-            let groupCell = groupsShower.cellForItem(at: indexPath) as! CollectionViewLabelCell
-            groupCell.animate(selected: true)
+        if collectionView==emojisShower {
+            let emojiCell = emojisShower.cellForItem(at: indexPath) as! CollectionViewImageCell
+            emojiCell.animate(selected: true)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        if collectionView==groupsShower {
-            let groupCell = groupsShower.cellForItem(at: indexPath) as! CollectionViewLabelCell
-            groupCell.animate(selected: false)
+        if collectionView==emojisShower {
+            let emojiCell = emojisShower.cellForItem(at: indexPath) as! CollectionViewImageCell
+            emojiCell.animate(selected: false)
         }
     }
-    */
     
     // <UIScrollViewDelegate>
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
