@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Photos
 
-class CameraRollPhotosViewController: UIViewController, UICollectionViewDelegate {
+class CameraRollPhotosViewController: UIViewController, UICollectionViewDelegate, PhotosDataModelDelegate {
     
     //View
     @IBOutlet weak var collectionView: UICollectionView!
@@ -27,7 +27,12 @@ class CameraRollPhotosViewController: UIViewController, UICollectionViewDelegate
     }
     
     //Model
-    let photosDataModel = PhotosDataModel()
+    lazy var photosDataModel = { () -> PhotosDataModel in 
+        let model = PhotosDataModel()
+        model.delegate = self
+        return model
+    }()
+    
     var selectedImageIndex = Set<IndexPath>()
     
     override func viewDidLoad() {
@@ -37,7 +42,12 @@ class CameraRollPhotosViewController: UIViewController, UICollectionViewDelegate
         collectionView.register(UINib(nibName: "ImageCollectionViewCell", bundle: Bundle(for: ImageCollectionViewCell.self)), forCellWithReuseIdentifier: "photoCell")
     }
     
-    //<UICollectionViewDelegate>
+    // <PhotosDataModelDelegate>
+    func fetchedPhotosDidChanged() {
+        self.collectionView.reloadData()
+    }
+    
+    // <UICollectionViewDelegate>
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         if selectedImageIndex.contains(indexPath) {
             let cell = collectionView.cellForItem(at: indexPath) as! ImageCollectionViewCell

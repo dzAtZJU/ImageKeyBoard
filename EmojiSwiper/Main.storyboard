@@ -233,7 +233,7 @@
         <!--Camera Roll Photos View Controller-->
         <scene sceneID="6S6-zD-WyQ">
             <objects>
-                <viewController id="vL4-hE-P5X" customClass="CameraRollPhotosViewController" customModule="EmojiSwiper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="choosePhotos" id="vL4-hE-P5X" customClass="CameraRollPhotosViewController" customModule="EmojiSwiper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gG3-eJ-nMH"/>
                         <viewControllerLayoutGuide type="bottom" id="CdQ-6W-eF9"/>

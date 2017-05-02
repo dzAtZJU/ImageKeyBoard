@@ -9,14 +9,50 @@
 import Foundation
 import Photos
 
-class PhotosDataModel: NSObject, UICollectionViewDataSource{
+protocol PhotosDataModelDelegate {
+    func fetchedPhotosDidChanged()
+}
+
+class PhotosDataModel: NSObject, UICollectionViewDataSource, PHPhotoLibraryChangeObserver{
+    override init() {
+        super.init()
+        PHPhotoLibrary.shared().register(self)
+    }
     
-    var assets: [PHAsset] = {
-        var _assets = [PHAsset]()
-        _assets += PhotosDataModel.fetchQQPhotos() + PhotosDataModel.fetchRecentlyAddedPhotos()
-        _assets = Array(Set(_assets))
-        return _assets
+    private var qqPhotosFetchResult = { () -> PHFetchResult<PHAssetCollection> in
+        let phFetchOptions = PHFetchOptions()
+        phFetchOptions.predicate = NSPredicate(format: "localizedTitle == %@", "QQ")
+        let assetCollections = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: phFetchOptions)
+        return assetCollections
     }()
+    
+    private var recentPhotosFetchResult = {
+        return PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumRecentlyAdded, options: nil)
+    }()
+    
+    var delegate: PhotosDataModelDelegate!
+    
+    var assets: [PHAsset] {
+        get {
+            var _assets = [PHAsset]()
+            _assets += fetchQQPhotos() + fetchRecentlyAddedPhotos()
+            _assets = Array(Set(_assets))
+            return _assets
+        }
+    }
+    
+    // <PHPhotoLibraryChangeObserver>
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        DispatchQueue.main.sync {
+            if let changes = changeInstance.changeDetails(for: qqPhotosFetchResult) {
+                qqPhotosFetchResult = changes.fetchResultAfterChanges
+            }
+            if let changes = changeInstance.changeDetails(for: recentPhotosFetchResult) {
+                recentPhotosFetchResult = changes.fetchResultAfterChanges
+            }
+            delegate.fetchedPhotosDidChanged()
+        }
+    }
     
     // <CollectionViewDataSource>
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -33,12 +69,9 @@ class PhotosDataModel: NSObject, UICollectionViewDataSource{
         return cell
     }
     
-    private class func fetchQQPhotos() -> [PHAsset]{
+    private func fetchQQPhotos() -> [PHAsset]{
         var qqAssets = [PHAsset]()
-        let phFetchOptions = PHFetchOptions()
-        phFetchOptions.predicate = NSPredicate(format: "localizedTitle == %@", "QQ")
-        let assetCollections = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: phFetchOptions)
-        assetCollections.enumerateObjects(
+        qqPhotosFetchResult.enumerateObjects(
             {assetCollection, index, stop in
                 let phFetchOptions = PHFetchOptions()
                 phFetchOptions.fetchLimit = 5
@@ -54,10 +87,9 @@ class PhotosDataModel: NSObject, UICollectionViewDataSource{
         return qqAssets
     }
     
-    private class func fetchRecentlyAddedPhotos() -> [PHAsset] {
+    private func fetchRecentlyAddedPhotos() -> [PHAsset] {
         var recentlyAddedAssets = [PHAsset]()
-        let assetCollections = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumRecentlyAdded, options: nil)
-        assetCollections.enumerateObjects(
+        recentPhotosFetchResult.enumerateObjects(
             {assetCollection, index, stop in
                 let phFetchOptions = PHFetchOptions()
                 phFetchOptions.fetchLimit = 10

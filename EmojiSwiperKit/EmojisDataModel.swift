@@ -11,6 +11,7 @@ import CoreData
 import UIKit
 
 public class EmojisDataModel {
+    private static let groupIdentifier = "group.ind.weiran3120102776.EmojiSwiper2"
     
     public let persistentContainer: NSPersistentContainer?
     private let managedObjectContext: NSManagedObjectContext
@@ -28,30 +29,32 @@ public class EmojisDataModel {
     }
     
     public class func myEmojisDataModel() -> EmojisDataModel {
-        var applicationDocumentsDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.ind.weiran3120102776.EmojiSwiper")!
-        applicationDocumentsDirectory.appendPathComponent("EmojiSwiper")
+        var applicationDocumentsDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)!
+        applicationDocumentsDirectory.appendPathComponent("EmojiSwiper2")
         let storeDescription = NSPersistentStoreDescription(url: applicationDocumentsDirectory)
         storeDescription.isReadOnly = false
-        let defaultContainer = NSPersistentContainer(name: "EmojiSwiper")
+        let defaultContainer = NSPersistentContainer(name: "Model")
         defaultContainer.persistentStoreDescriptions = [storeDescription]
         defaultContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-        let myDefaults = UserDefaults(suiteName: "group.ind.weiran3120102776.EmojiSwiper")!
+        
+        /*
+        let myDefaults = UserDefaults(suiteName: groupIdentifier)!
         myDefaults.set(applicationDocumentsDirectory, forKey: "emojisDatabasePath")
         myDefaults.synchronize()
+        */
+        
         return EmojisDataModel(container: defaultContainer)
     }
     
     public class func readEmojisDataModel() -> EmojisDataModel {
-        let myUserDefaults = UserDefaults(suiteName: "group.ind.weiran3120102776.EmojiSwiper")
-        let urlString = myUserDefaults?.object(forKey: "emojisDatabasePath") as! String
-        let applicationDocumentsDirectory = URL(fileURLWithPath: urlString)
+        var applicationDocumentsDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)!
+        applicationDocumentsDirectory.appendPathComponent("EmojiSwiper2")
         let storeDescription = NSPersistentStoreDescription(url: applicationDocumentsDirectory)
-        storeDescription.isReadOnly = false
-        let defaultContainer = NSPersistentContainer(name: "EmojiSwiper")
+        let defaultContainer = NSPersistentContainer(name: "Model")
         defaultContainer.persistentStoreDescriptions = [storeDescription]
         defaultContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {

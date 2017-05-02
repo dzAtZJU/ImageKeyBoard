@@ -26,7 +26,6 @@
 		FC0AA2B61EB176F50084F96B /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2AF1EB176F50084F96B /* MyPageViewController.swift */; };
 		FC0AA2B71EB176F50084F96B /* PhotosDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2B01EB176F50084F96B /* PhotosDataModel.swift */; };
 		FC0AA2B81EB176F50084F96B /* EmojiGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2B11EB176F50084F96B /* EmojiGroupCell.swift */; };
-		FC767B211EB6062B00B2A7A9 /* EmojiSwiper.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = FCDF2B6F1EB1866700F9B79B /* EmojiSwiper.xcdatamodeld */; };
 		FCA4AE0C1EB383C2001BEF35 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4AE0B1EB383C2001BEF35 /* KeyboardViewController.swift */; };
 		FCA4AE101EB383C2001BEF35 /* MyBoard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FCA4AE091EB383C2001BEF35 /* MyBoard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FCD824441EB39EE000808A27 /* MyKeyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCD824431EB39EE000808A27 /* MyKeyboard.storyboard */; };
@@ -35,8 +34,10 @@
 		FCD824501EB4853600808A27 /* CollectionViewLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD8244F1EB4853600808A27 /* CollectionViewLabelCell.xib */; };
 		FCD824511EB4891000808A27 /* EmojiSwiperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0AA28F1EB174600084F96B /* EmojiSwiperKit.framework */; };
 		FCD824541EB48F4E00808A27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC0AA2A91EB1765F0084F96B /* Assets.xcassets */; };
-		FCDF2B711EB1866700F9B79B /* EmojiSwiper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCDF2B6F1EB1866700F9B79B /* EmojiSwiper.xcdatamodeld */; };
-		FCDF2B721EB1878A00F9B79B /* EmojiSwiper.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = FCDF2B6F1EB1866700F9B79B /* EmojiSwiper.xcdatamodeld */; };
+		FCEFFC811EB87F140011510F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCEFFC7F1EB87F140011510F /* Model.xcdatamodeld */; };
+		FCEFFC821EB880390011510F /* MyBoard.entitlements in Sources */ = {isa = PBXBuildFile; fileRef = FCD8243E1EB3994700808A27 /* MyBoard.entitlements */; };
+		FCEFFC831EB880420011510F /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = FCEFFC7F1EB87F140011510F /* Model.xcdatamodeld */; };
+		FCEFFC841EB881470011510F /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = FCEFFC7F1EB87F140011510F /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,7 +120,7 @@
 		FCD824451EB4665F00808A27 /* EmojisPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojisPicker.swift; sourceTree = "<group>"; };
 		FCD8244D1EB4852900808A27 /* CollectionViewLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLabelCell.swift; sourceTree = "<group>"; };
 		FCD8244F1EB4853600808A27 /* CollectionViewLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewLabelCell.xib; sourceTree = "<group>"; };
-		FCDF2B701EB1866700F9B79B /* EmojiSwiper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EmojiSwiper.xcdatamodel; sourceTree = "<group>"; };
+		FCEFFC801EB87F140011510F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,7 +173,6 @@
 		FC0AA2741EB174160084F96B /* EmojiSwiper */ = {
 			isa = PBXGroup;
 			children = (
-				FCDF2B6F1EB1866700F9B79B /* EmojiSwiper.xcdatamodeld */,
 				FC0AA2B91EB178240084F96B /* EmojiSwiper.entitlements */,
 				FC0AA2AB1EB176F50084F96B /* EmojisGroupViewController.swift */,
 				FC0AA2AC1EB176F50084F96B /* ImageCollectionViewCell.xib */,
@@ -202,6 +202,7 @@
 				FC0AA2921EB174600084F96B /* Info.plist */,
 				FCD8244D1EB4852900808A27 /* CollectionViewLabelCell.swift */,
 				FCD8244F1EB4853600808A27 /* CollectionViewLabelCell.xib */,
+				FCEFFC7F1EB87F140011510F /* Model.xcdatamodeld */,
 			);
 			path = EmojiSwiperKit;
 			sourceTree = "<group>";
@@ -352,7 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCDF2B721EB1878A00F9B79B /* EmojiSwiper.xcdatamodeld in Resources */,
+				FCEFFC841EB881470011510F /* Model.xcdatamodeld in Resources */,
 				FC0AA2831EB174160084F96B /* LaunchScreen.storyboard in Resources */,
 				FC0AA2AA1EB1765F0084F96B /* Assets.xcassets in Resources */,
 				FC0AA2B31EB176F50084F96B /* ImageCollectionViewCell.xib in Resources */,
@@ -373,7 +374,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC767B211EB6062B00B2A7A9 /* EmojiSwiper.xcdatamodeld in Resources */,
+				FCEFFC831EB880420011510F /* Model.xcdatamodeld in Resources */,
 				FCD824541EB48F4E00808A27 /* Assets.xcassets in Resources */,
 				FCD824441EB39EE000808A27 /* MyKeyboard.storyboard in Resources */,
 			);
@@ -403,9 +404,9 @@
 			files = (
 				FC0AA2A21EB1748B0084F96B /* CollectionViewImageCell.swift in Sources */,
 				FC0AA2A51EB174F10084F96B /* EmojisDataModel.swift in Sources */,
-				FCDF2B711EB1866700F9B79B /* EmojiSwiper.xcdatamodeld in Sources */,
 				FC0AA2A61EB174F10084F96B /* EmoerDataBase.swift in Sources */,
 				FCD8244E1EB4852900808A27 /* CollectionViewLabelCell.swift in Sources */,
+				FCEFFC811EB87F140011510F /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCEFFC821EB880390011510F /* MyBoard.entitlements in Sources */,
 				FCA4AE0C1EB383C2001BEF35 /* KeyboardViewController.swift in Sources */,
 				FCD824461EB4665F00808A27 /* EmojisPicker.swift in Sources */,
 			);
@@ -694,15 +696,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FCDF2B6F1EB1866700F9B79B /* EmojiSwiper.xcdatamodeld */ = {
+		FCEFFC7F1EB87F140011510F /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FCDF2B701EB1866700F9B79B /* EmojiSwiper.xcdatamodel */,
+				FCEFFC801EB87F140011510F /* Model.xcdatamodel */,
 			);
-			currentVersion = FCDF2B701EB1866700F9B79B /* EmojiSwiper.xcdatamodel */;
-			name = EmojiSwiper.xcdatamodeld;
-			path = EmojiSwiperKit/EmojiSwiper.xcdatamodeld;
-			sourceTree = SOURCE_ROOT;
+			currentVersion = FCEFFC801EB87F140011510F /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
