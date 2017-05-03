@@ -122,6 +122,13 @@ public class EmojisDataModel {
         managedObjectContext.delete(group)
     }
     
+    public func deleteGroup(orderNumber: Int) {
+        let group = fetchGroupObject(orderNumber: Int16(orderNumber))
+        if let hasGroup = group {
+            managedObjectContext.delete(hasGroup)
+        }
+    }
+    
     public func getEmojisInGroup(orderNumber: Int) -> NSOrderedSet? {
         let group = emojiGroups[orderNumber]
         return group.emojis

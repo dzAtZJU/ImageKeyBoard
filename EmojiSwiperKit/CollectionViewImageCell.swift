@@ -27,10 +27,10 @@ public class CollectionViewImageCell: UICollectionViewCell {
     
     public func animate(selected: Bool) {
         if selected {
-            UIView.animate(withDuration: 0.5, animations: { self.transform = CGAffineTransform(scaleX: 2, y: 2) })
+            UIView.animate(withDuration: 0.4, animations: { self.transform = CGAffineTransform(scaleX: 1.5, y: 1.5) })
         }
         else {
-            UIView.animate(withDuration: 0.5, animations: { self.transform = CGAffineTransform.identity })
+            UIView.animate(withDuration: 0.6, animations: { self.transform = CGAffineTransform.identity })
         }
     }
     

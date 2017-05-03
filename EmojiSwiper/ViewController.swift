@@ -33,10 +33,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     }
     @IBAction func deleteGroup(_ sender: UISwipeGestureRecognizer) {
         if let index = emojiGroupsView.indexPathForItem(at: sender.location(in: emojiGroupsView)) {
-            emojisDataModel.deleteGroup(group: emojiGroups[index.row])
-            if index.row+1 <= emojiGroups.count {
-                for i in index.row+1...emojiGroups.count {
-                    emojiGroups[i].orderNumber -= 1
+            let groupAmount = emojiGroups.count
+            emojisDataModel.deleteGroup(orderNumber: index.row)
+            if index.row+1 < groupAmount {
+                for i in index.row+1..<groupAmount {
+                    emojiGroups[i-1].orderNumber -= 1
                 }
             }
             emojiGroupsView.reloadData()

@@ -20,14 +20,19 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         super.updateViewConstraints()
         
         // Add custom view sizing constraints here
+        
+        let viewHeightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 250)
+        view.addConstraint(viewHeightConstraint)
+    
     }
     
     // Model
     let emojisDataModel = EmojisDataModel.readEmojisDataModel()
     
-    //System
+    // System
     let pasteBoard = UIPasteboard.general
     
+    // View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -123,9 +128,14 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
             pasteBoard.image = image
         }
         else {
+            // Scroll
             let indexPathForFirstEmoji = IndexPath(row: 0, section: indexPath.row)
             emojisShower.scrollToItem(at: indexPathForFirstEmoji, at: UICollectionViewScrollPosition.left, animated: true)
             groupsShower.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.left, animated: true)
+            
+            // Highlight
+            animateFooterInEmojisShower(groupOrderNumber: indexPath.row, animate: true)
+            animateFooterInEmojisShower(groupOrderNumber: indexPath.row-1, animate: true)
             
             let groupCell = groupsShower.cellForItem(at: indexPath) as! CollectionViewLabelCell
             groupCell.animate(selected: true)
@@ -139,6 +149,10 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         else {
             let groupCell = groupsShower.cellForItem(at: indexPath) as! CollectionViewLabelCell
             groupCell.animate(selected: false)
+            
+            // Unhighlight
+            animateFooterInEmojisShower(groupOrderNumber: indexPath.row, animate: false)
+            animateFooterInEmojisShower(groupOrderNumber: indexPath.row-1, animate: false)
         }
     }
     
@@ -166,5 +180,14 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         }
     }
 
+    private func animateFooterInEmojisShower(groupOrderNumber: Int, animate: Bool) {
+        let footer = emojisShower.supplementaryView(forElementKind: UICollectionElementKindSectionFooter, at: IndexPath(row: 0, section: groupOrderNumber))
+        if animate {
+            footer?.backgroundColor = footer?.backgroundColor?.withAlphaComponent(1)
+        }
+        else {
+            footer?.backgroundColor = footer?.backgroundColor?.withAlphaComponent(0)
+        }
+    }
 
 }
