@@ -28,6 +28,7 @@
 		FC0AA2B81EB176F50084F96B /* EmojiGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2B11EB176F50084F96B /* EmojiGroupCell.swift */; };
 		FCA4AE0C1EB383C2001BEF35 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4AE0B1EB383C2001BEF35 /* KeyboardViewController.swift */; };
 		FCA4AE101EB383C2001BEF35 /* MyBoard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FCA4AE091EB383C2001BEF35 /* MyBoard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FCD3E7371EBBB9C500993D1F /* CollectionViewLiquidColorFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD3E7361EBBB9C500993D1F /* CollectionViewLiquidColorFooter.swift */; };
 		FCD824441EB39EE000808A27 /* MyKeyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCD824431EB39EE000808A27 /* MyKeyboard.storyboard */; };
 		FCD824461EB4665F00808A27 /* EmojisPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD824451EB4665F00808A27 /* EmojisPicker.swift */; };
 		FCD8244E1EB4852900808A27 /* CollectionViewLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD8244D1EB4852900808A27 /* CollectionViewLabelCell.swift */; };
@@ -115,6 +116,7 @@
 		FCA4AE091EB383C2001BEF35 /* MyBoard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyBoard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA4AE0B1EB383C2001BEF35 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		FCA4AE0D1EB383C2001BEF35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCD3E7361EBBB9C500993D1F /* CollectionViewLiquidColorFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLiquidColorFooter.swift; sourceTree = "<group>"; };
 		FCD8243E1EB3994700808A27 /* MyBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyBoard.entitlements; sourceTree = "<group>"; };
 		FCD824431EB39EE000808A27 /* MyKeyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyKeyboard.storyboard; sourceTree = "<group>"; };
 		FCD824451EB4665F00808A27 /* EmojisPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojisPicker.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				FCD824431EB39EE000808A27 /* MyKeyboard.storyboard */,
 				FCD8243E1EB3994700808A27 /* MyBoard.entitlements */,
 				FCA4AE0D1EB383C2001BEF35 /* Info.plist */,
+				FCD3E7361EBBB9C500993D1F /* CollectionViewLiquidColorFooter.swift */,
 			);
 			path = MyBoard;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCEFFC821EB880390011510F /* MyBoard.entitlements in Sources */,
+				FCD3E7371EBBB9C500993D1F /* CollectionViewLiquidColorFooter.swift in Sources */,
 				FCA4AE0C1EB383C2001BEF35 /* KeyboardViewController.swift in Sources */,
 				FCD824461EB4665F00808A27 /* EmojisPicker.swift in Sources */,
 			);

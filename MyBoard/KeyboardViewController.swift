@@ -29,6 +29,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     
     // Model
     let emojisDataModel = EmojisDataModel.readEmojisDataModel()
+    var selectedGroup: Int?
     
     // System
     let pasteBoard = UIPasteboard.general
@@ -55,6 +56,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         emojisDataModel.refresh()
         groupsShower.reloadData()
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated
@@ -122,7 +124,8 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         var cell = UICollectionReusableView()
         if collectionView==emojisShower {
             if kind==UICollectionElementKindSectionFooter {
-                cell = emojisShower.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "groupFooter", for: indexPath)
+                cell = emojisShower.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "emojisViewFooter", for: indexPath)
+                dyeFooter(group: indexPath.section, footer: cell as! CollectionViewLiquidColorFooter)
             }
         }
         return cell
@@ -136,6 +139,9 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
             pasteBoard.image = image
         }
         else {
+            // Update Model
+            selectedGroup = indexPath.row
+            
             // Scroll
             let indexPathForFirstEmoji = IndexPath(row: 0, section: indexPath.row)
             emojisShower.scrollToItem(at: indexPathForFirstEmoji, at: UICollectionViewScrollPosition.left, animated: true)
@@ -200,13 +206,17 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     }
 
     private func animateFooterInEmojisShower(groupOrderNumber: Int, animate: Bool) {
-        let footer = emojisShower.supplementaryView(forElementKind: UICollectionElementKindSectionFooter, at: IndexPath(row: 0, section: groupOrderNumber))
-        if animate {
-            footer?.backgroundColor = footer?.backgroundColor?.withAlphaComponent(1)
+        let footer = emojisShower.supplementaryView(forElementKind: UICollectionElementKindSectionFooter, at: IndexPath(row: 0, section: groupOrderNumber)) as? CollectionViewLiquidColorFooter
+        footer?.animate(highlight: animate)
+    }
+    
+    private func dyeFooter(group: Int, footer: CollectionViewLiquidColorFooter) {
+        if (selectedGroup == group) || (selectedGroup == group + 1){
+            footer.animate(highlight: true)
         }
         else {
-            footer?.backgroundColor = footer?.backgroundColor?.withAlphaComponent(0)
+            footer.animate(highlight: false)
         }
+        
     }
-
 }

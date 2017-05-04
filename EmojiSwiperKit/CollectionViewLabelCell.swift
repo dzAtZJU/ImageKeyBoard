@@ -17,12 +17,10 @@ public class CollectionViewLabelCell: UICollectionViewCell {
     }
     
     public func animate(selected: Bool) {
-        if selected {
-            self.backgroundColor = self.backgroundColor?.withAlphaComponent(0.6)
-        }
-        else {
-            self.backgroundColor = self.backgroundColor?.withAlphaComponent(0.2)
-        }
+        
+        let alpha = CGFloat(selected ? 1.0 : 0.45)
+        
+        label.backgroundColor = label.backgroundColor?.withAlphaComponent(alpha)
     }
     
     override public func sizeThatFits(_ size: CGSize) -> CGSize {
