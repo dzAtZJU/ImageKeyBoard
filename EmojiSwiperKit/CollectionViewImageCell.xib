@@ -23,7 +23,6 @@
                     </imageView>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="1" green="0.046521323990000002" blue="0.055590965220000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="UIY-Va-6kb" secondAttribute="trailing" id="40O-kM-PQO"/>
                 <constraint firstItem="UIY-Va-6kb" firstAttribute="leading" secondItem="6QD-hL-geD" secondAttribute="leading" id="U8U-F4-ksZ"/>

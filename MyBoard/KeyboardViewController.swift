@@ -22,6 +22,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         // Add custom view sizing constraints here
         
         let viewHeightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 250)
+            viewHeightConstraint.priority = 999
         view.addConstraint(viewHeightConstraint)
     
     }
@@ -44,9 +45,16 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         emojisShower.register(UINib(nibName: "CollectionViewImageCell", bundle: Bundle(for: CollectionViewImageCell.self)), forCellWithReuseIdentifier: "emojiCell")
         groupsShower.register(UINib(nibName: "CollectionViewLabelCell", bundle: Bundle(for: CollectionViewLabelCell.self)), forCellWithReuseIdentifier: "groupTagCell")
         
+        let groupsShowerLayout = groupsShower.collectionViewLayout as! UICollectionViewFlowLayout
+        groupsShowerLayout.estimatedItemSize = CGSize(width: 62, height: 40)
+        
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        emojisDataModel.refresh()
+        groupsShower.reloadData()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated
@@ -170,6 +178,17 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
             emojiCell.animate(selected: false)
         }
     }
+    
+    /*
+    // <UICollectionViewDelegateFlowLayout>
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        if collectionView == groupsShower {
+            
+        }
+        return flowLayout.itemSize
+    }
+    */
     
     // <UIScrollViewDelegate>
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

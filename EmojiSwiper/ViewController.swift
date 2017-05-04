@@ -16,7 +16,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     @IBAction func newGroup(_ sender: UIButton) {
         let index = emojiGroups.count
         emojisDataModel.addGroup(orderNumber: Int16(index))
-        emojiGroupsView.reloadData()
+        selectedGroupOrderNumber = Int16(index)
+        performSegue(withIdentifier: "pickPhoto", sender: sender)
     }
     @IBOutlet var swipLeft: UISwipeGestureRecognizer!
     @IBOutlet var panGestRecog: UIPanGestureRecognizer!
@@ -68,6 +69,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
         emojiGroupsView.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        emojiGroupsView.reloadData()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         emojisDataModel.saveContext()
@@ -76,8 +81,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     //
     internal func addEmoji(imageData: Data) {
         emojisDataModel.addEmojiToGroup(imageData: imageData, orderNumber:selectedGroupOrderNumber!)
-        emojiGroupsView.reloadItems(at: [IndexPath(row: Int(selectedGroupOrderNumber!), section: 0)] )
-        emojiGroupsView.reloadData()
     }
     
     // <UICollectionView>

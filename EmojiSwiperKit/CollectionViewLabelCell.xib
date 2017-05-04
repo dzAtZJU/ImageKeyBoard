@@ -12,31 +12,44 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SB4-XU-4Mv" customClass="CollectionViewLabelCell" customModule="EmojiSwiperKit" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="62" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="62" height="40"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8W-ne-xTN">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyg-Hs-Xhb">
+                        <rect key="frame" x="0.0" y="0.0" width="62" height="40"/>
+                        <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="0.1971575184501845" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="3yw-Ud-Ftk"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="62" id="upN-Zm-XbO"/>
+                        </constraints>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <color key="NSColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="20" name="Chalkduster"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="0.15172838184931506" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.20121308016877637" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="R8W-ne-xTN" firstAttribute="top" secondItem="SB4-XU-4Mv" secondAttribute="top" id="3TJ-dx-WnG"/>
-                <constraint firstAttribute="trailing" secondItem="R8W-ne-xTN" secondAttribute="trailing" id="ijd-k2-kO0"/>
-                <constraint firstAttribute="bottom" secondItem="R8W-ne-xTN" secondAttribute="bottom" id="qAl-z9-4zp"/>
-                <constraint firstItem="R8W-ne-xTN" firstAttribute="leading" secondItem="SB4-XU-4Mv" secondAttribute="leading" id="sec-A8-XIY"/>
+                <constraint firstAttribute="bottom" secondItem="oyg-Hs-Xhb" secondAttribute="bottom" id="5UV-iB-nZ7"/>
+                <constraint firstItem="oyg-Hs-Xhb" firstAttribute="leading" secondItem="SB4-XU-4Mv" secondAttribute="leading" id="8iR-sU-279"/>
+                <constraint firstAttribute="trailing" secondItem="oyg-Hs-Xhb" secondAttribute="trailing" id="wBh-Rf-ur1"/>
+                <constraint firstItem="oyg-Hs-Xhb" firstAttribute="top" secondItem="SB4-XU-4Mv" secondAttribute="top" id="xNP-ux-ozb"/>
             </constraints>
+            <size key="customSize" width="32" height="34"/>
             <connections>
-                <outlet property="label" destination="R8W-ne-xTN" id="1iJ-hM-usq"/>
+                <outlet property="label" destination="oyg-Hs-Xhb" id="Cit-pj-98N"/>
             </connections>
-            <point key="canvasLocation" x="0.0" y="33"/>
+            <point key="canvasLocation" x="-9" y="25"/>
         </collectionViewCell>
     </objects>
 </document>

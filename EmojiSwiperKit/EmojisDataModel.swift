@@ -19,13 +19,11 @@ public class EmojisDataModel {
     public init(context: NSManagedObjectContext) {
         managedObjectContext = context
         persistentContainer = nil
-        emojiGroups = fetchAllGroups()
     }
     
     public init(container: NSPersistentContainer) {
         persistentContainer = container
         managedObjectContext = persistentContainer!.viewContext
-        emojiGroups = fetchAllGroups()
     }
     
     public class func myEmojisDataModel() -> EmojisDataModel {
@@ -64,7 +62,9 @@ public class EmojisDataModel {
         return EmojisDataModel(container: defaultContainer)
     }
     
-    public var emojiGroups: [EmojiGroupMO]!
+    public var emojiGroups: [EmojiGroupMO] {
+        return fetchAllGroups()
+    }
     
     public func saveContext () {
         if managedObjectContext.hasChanges {
@@ -77,6 +77,12 @@ public class EmojisDataModel {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+        print("save: \(emojiGroups.count)")
+    }
+    
+    public func refresh() {
+        managedObjectContext.refreshAllObjects()
+        print("group count: \(emojiGroups.count)")
     }
     
     public func addGroup(orderNumber: Int16) {
@@ -123,10 +129,12 @@ public class EmojisDataModel {
     }
     
     public func deleteGroup(orderNumber: Int) {
+        print("Before delete group: \(emojiGroups.count)")
         let group = fetchGroupObject(orderNumber: Int16(orderNumber))
         if let hasGroup = group {
             managedObjectContext.delete(hasGroup)
         }
+        print("After delete group: \(emojiGroups.count)")
     }
     
     public func getEmojisInGroup(orderNumber: Int) -> NSOrderedSet? {
