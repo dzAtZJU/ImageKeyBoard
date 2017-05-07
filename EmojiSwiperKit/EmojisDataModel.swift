@@ -63,7 +63,7 @@ public class EmojisDataModel {
     }
     
     public func addDefaultEmojiGroups() {
-        if let path = Bundle.main.path(forResource: "Emojis", ofType: "plist") {
+        if let path = Bundle(for: CollectionViewImageCell.self).path(forResource: "Emojis", ofType: "plist") {
             if let emojiGroups = NSDictionary(contentsOfFile: path) {
                 var orderNumber: Int16 = 0
                 for group in emojiGroups {
