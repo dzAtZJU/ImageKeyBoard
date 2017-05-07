@@ -81,8 +81,13 @@ class EmojisGroupViewController: UIViewController, UICollectionViewDataSource, U
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "emojiCell", for: indexPath) as! ImageCollectionViewCell
-        let imageData = emojis[indexPath.row].image!
-        cell.setImage(imageData: imageData as Data)
+        let emojiModel = emojis[indexPath.row]
+        if let imageData = emojiModel.image {
+            cell.setImage(imageData: imageData as Data)
+        }
+        else {
+            cell.setUnicodeEmoji(emoji: emojiModel.name!)
+        }
         return cell
     }
 

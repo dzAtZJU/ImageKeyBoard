@@ -62,6 +62,23 @@ public class EmojisDataModel {
         return EmojisDataModel(container: defaultContainer)
     }
     
+    public func addDefaultEmojiGroups() {
+        if let path = Bundle.main.path(forResource: "Emojis", ofType: "plist") {
+            if let emojiGroups = NSDictionary(contentsOfFile: path) {
+                var orderNumber: Int16 = 0
+                for group in emojiGroups {
+                    let groupName = group.key as! String
+                    let unicodeEmojis = group.value as! [String]
+                    addGroup(orderNumber: orderNumber, tag: groupName)
+                    for emoji in unicodeEmojis {
+                        addEmojiToGroup(name: emoji, orderNumber: orderNumber)
+                    }
+                    orderNumber += 1
+                }
+            }
+        }
+    }
+    
     public var emojiGroups: [EmojiGroupMO] {
         return fetchAllGroups()
     }
@@ -85,14 +102,24 @@ public class EmojisDataModel {
         print("group count: \(emojiGroups.count)")
     }
     
-    public func addGroup(orderNumber: Int16) {
+    public func addGroup(orderNumber: Int16, tag: String = "") {
         let group = NSEntityDescription.insertNewObject(forEntityName: "EmojiGroup", into: managedObjectContext) as! EmojiGroupMO
         group.orderNumber = orderNumber
+        if tag != "" {
+            group.tag = tag
+        }
     }
     
     public func addEmojiToGroup(imageData: Data, orderNumber: Int16) {
         let emoji = NSEntityDescription.insertNewObject(forEntityName: "Emoji", into: managedObjectContext) as! EmojiMO
         emoji.image = imageData as NSData
+        let group = fetchGroupObject(orderNumber: orderNumber)
+        emoji.group = group
+    }
+    
+    public func addEmojiToGroup(name: String, orderNumber: Int16) {
+        let emoji = NSEntityDescription.insertNewObject(forEntityName: "Emoji", into: managedObjectContext) as! EmojiMO
+        emoji.name = name
         let group = fetchGroupObject(orderNumber: orderNumber)
         emoji.group = group
     }

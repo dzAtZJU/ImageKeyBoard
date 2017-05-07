@@ -15,6 +15,7 @@ internal class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var selectionOrderLabel: UILabel!
+    @IBOutlet weak var unicodeEmojiLabel: UILabel!
     
     internal var selectionOrder: UInt8 {
         get {
@@ -31,6 +32,12 @@ internal class ImageCollectionViewCell: UICollectionViewCell {
     
     func setImage(imageData: Data) {
         self.setImage(UIImage(data: imageData))
+    }
+    
+    func setUnicodeEmoji(emoji: String) {
+        self.unicodeEmojiLabel.text = emoji
+        self.unicodeEmojiLabel.isHidden = false
+        self.imageView.isHidden = true
     }
     
     func setImage(asset: PHAsset) {

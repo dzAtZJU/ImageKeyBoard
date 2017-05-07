@@ -35,6 +35,8 @@
 		FCD824501EB4853600808A27 /* CollectionViewLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD8244F1EB4853600808A27 /* CollectionViewLabelCell.xib */; };
 		FCD824511EB4891000808A27 /* EmojiSwiperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0AA28F1EB174600084F96B /* EmojiSwiperKit.framework */; };
 		FCD824541EB48F4E00808A27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC0AA2A91EB1765F0084F96B /* Assets.xcassets */; };
+		FCE2DC221EBEEC6D00AAB934 /* UnicodeEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE2DC211EBEEC6D00AAB934 /* UnicodeEmoji.swift */; };
+		FCE2DC241EBF125D00AAB934 /* Emojis.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCE2DC231EBF125D00AAB934 /* Emojis.plist */; };
 		FCEFFC811EB87F140011510F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCEFFC7F1EB87F140011510F /* Model.xcdatamodeld */; };
 		FCEFFC821EB880390011510F /* MyBoard.entitlements in Sources */ = {isa = PBXBuildFile; fileRef = FCD8243E1EB3994700808A27 /* MyBoard.entitlements */; };
 		FCEFFC831EB880420011510F /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = FCEFFC7F1EB87F140011510F /* Model.xcdatamodeld */; };
@@ -122,6 +124,8 @@
 		FCD824451EB4665F00808A27 /* EmojisPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojisPicker.swift; sourceTree = "<group>"; };
 		FCD8244D1EB4852900808A27 /* CollectionViewLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLabelCell.swift; sourceTree = "<group>"; };
 		FCD8244F1EB4853600808A27 /* CollectionViewLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewLabelCell.xib; sourceTree = "<group>"; };
+		FCE2DC211EBEEC6D00AAB934 /* UnicodeEmoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeEmoji.swift; sourceTree = "<group>"; };
+		FCE2DC231EBF125D00AAB934 /* Emojis.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Emojis.plist; sourceTree = "<group>"; };
 		FCEFFC801EB87F140011510F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,6 +209,8 @@
 				FCD8244D1EB4852900808A27 /* CollectionViewLabelCell.swift */,
 				FCD8244F1EB4853600808A27 /* CollectionViewLabelCell.xib */,
 				FCEFFC7F1EB87F140011510F /* Model.xcdatamodeld */,
+				FCE2DC211EBEEC6D00AAB934 /* UnicodeEmoji.swift */,
+				FCE2DC231EBF125D00AAB934 /* Emojis.plist */,
 			);
 			path = EmojiSwiperKit;
 			sourceTree = "<group>";
@@ -370,6 +376,7 @@
 			files = (
 				FC0AA2A11EB1748B0084F96B /* CollectionViewImageCell.xib in Resources */,
 				FCD824501EB4853600808A27 /* CollectionViewLabelCell.xib in Resources */,
+				FCE2DC241EBF125D00AAB934 /* Emojis.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +416,7 @@
 				FC0AA2A51EB174F10084F96B /* EmojisDataModel.swift in Sources */,
 				FC0AA2A61EB174F10084F96B /* EmoerDataBase.swift in Sources */,
 				FCD8244E1EB4852900808A27 /* CollectionViewLabelCell.swift in Sources */,
+				FCE2DC221EBEEC6D00AAB934 /* UnicodeEmoji.swift in Sources */,
 				FCEFFC811EB87F140011510F /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
