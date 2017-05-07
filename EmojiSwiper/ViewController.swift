@@ -45,7 +45,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
         }
     }
     func swipe(_ sender: UISwipeGestureRecognizer) {
-        let cell = sender.view as! EmojiGroupCell
+        let cell = sender.view as! ImageCollectionViewCell
         let groupOrderNumber = emojiGroupsView.indexPath(for: cell)!.row
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "emojisGroupView") as! EmojisGroupViewController
         vc.emojisGroup = emojiGroups[groupOrderNumber]
@@ -65,6 +65,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        emojiGroupsView.register(UINib(nibName: "ImageCollectionViewCell", bundle: Bundle(for: ImageCollectionViewCell.self)), forCellWithReuseIdentifier: "emojiGroupCell")
         emojiGroupsView.delegate = self
         emojiGroupsView.dataSource = self
     }
@@ -89,9 +90,35 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     }
     
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return emojiGroups.count
+        let groupCount = emojiGroups.count
+        return groupCount
     }
     
+    internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "emojiGroupCell", for: indexPath) as! ImageCollectionViewCell
+        let group = emojiGroups[indexPath.row]
+        if let groupName = group.tag {
+            cell.setLabelText(text: groupName)
+        }
+        else {
+            let representativeEmoji = emojiGroups[indexPath.row].emojis?.lastObject as? EmojiMO
+            if let imageData = representativeEmoji?.image {
+                let image = UIImage(data: imageData as Data)
+                cell.setImage(image!)
+            }
+            else {
+                cell.setImage(nil)
+            }
+        }
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipe(_:)))
+        panGestRecog.require(toFail: swipeGestureRecognizer)
+        panGestRecog.require(toFail: swipLeft)
+        cell.addGestureRecognizer(swipeGestureRecognizer)
+            
+        return cell
+    }
+
+    /*
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "emojiGroupCell", for: indexPath) as! EmojiGroupCell
         let representativeEmoji = emojiGroups[indexPath.row].emojis?.lastObject as? EmojiMO
@@ -108,6 +135,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
         cell.addGestureRecognizer(swipeGestureRecognizer)
         return cell
     }
+ */
     
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedGroupOrderNumber = Int16(indexPath.row)

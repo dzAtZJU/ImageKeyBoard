@@ -28,6 +28,8 @@ internal class ImageCollectionViewCell: UICollectionViewCell {
     
     func setImage(_ image: UIImage?) {
         self.imageView.image = image
+        self.imageView.isHidden = false
+        self.unicodeEmojiLabel.isHidden = true
     }
     
     func setImage(imageData: Data) {
@@ -48,6 +50,12 @@ internal class ImageCollectionViewCell: UICollectionViewCell {
             self.setImage(image)
             }
         )
+    }
+    
+    func setLabelText(text: String) {
+        self.unicodeEmojiLabel.text = text
+        self.unicodeEmojiLabel.isHidden = false
+        self.imageView.isHidden = true
     }
     
     func setSelected(_ selected: Bool, animated: Bool = false) {
