@@ -37,11 +37,40 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="183" height="183"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGn-pc-asp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="183" height="183"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Label">
+                                                            <attributes>
+                                                                <font key="NSFont" size="40" name="Chalkduster"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z0q-QJ-yDv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="183" height="183"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="KGn-pc-asp" firstAttribute="trailing" secondItem="z0q-QJ-yDv" secondAttribute="trailing" id="9c6-te-XDx"/>
+                                            <constraint firstItem="z0q-QJ-yDv" firstAttribute="leading" secondItem="veY-BW-hgW" secondAttribute="leading" id="Kwr-oM-pmF"/>
+                                            <constraint firstItem="KGn-pc-asp" firstAttribute="bottom" secondItem="z0q-QJ-yDv" secondAttribute="bottom" id="LKz-ol-39M"/>
+                                            <constraint firstItem="KGn-pc-asp" firstAttribute="top" secondItem="z0q-QJ-yDv" secondAttribute="top" id="ZNz-K7-dD2"/>
+                                            <constraint firstAttribute="trailing" secondItem="z0q-QJ-yDv" secondAttribute="trailing" id="aXq-Ml-5xP"/>
+                                            <constraint firstItem="z0q-QJ-yDv" firstAttribute="top" secondItem="veY-BW-hgW" secondAttribute="top" id="nkj-9l-rj2"/>
+                                            <constraint firstAttribute="bottom" secondItem="z0q-QJ-yDv" secondAttribute="bottom" id="pek-jO-5RD"/>
+                                            <constraint firstItem="KGn-pc-asp" firstAttribute="leading" secondItem="z0q-QJ-yDv" secondAttribute="leading" id="qgN-Kv-KLC"/>
+                                        </constraints>
                                         <connections>
-                                            <segue destination="vL4-hE-P5X" kind="presentation" identifier="pickPhoto" id="1ak-jM-tsp"/>
+                                            <outlet property="imageView" destination="z0q-QJ-yDv" id="dab-d6-f6W"/>
+                                            <outlet property="label" destination="KGn-pc-asp" id="cic-An-lRf"/>
+                                            <segue destination="vL4-hE-P5X" kind="presentation" identifier="pickPhoto" id="6us-6G-Pnw"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

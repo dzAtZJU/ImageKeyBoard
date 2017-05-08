@@ -17,6 +17,8 @@ internal class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var selectionOrderLabel: UILabel!
     @IBOutlet weak var unicodeEmojiLabel: UILabel!
     
+    
+    
     internal var selectionOrder: UInt8 {
         get {
             return 0

@@ -12,26 +12,22 @@ import UIKit
 
 internal class EmojiGroupCell: UICollectionViewCell {
     
-    var emojiView: UIImageView = {
-        return UIImageView()
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupUI()
-    }
-    
-    func setupUI() {
-        emojiView.frame = bounds
-        self.addSubview(emojiView)
-    }
-    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var label: UILabel!
+
     func setImage(_ image: UIImage?) {
-        self.emojiView.image = image
+        self.imageView.image = image
+        self.imageView.isHidden = false
+        self.label.isHidden = true
+    }
+    
+    func setImage(imageData: Data) {
+        self.setImage(UIImage(data: imageData))
+    }
+    
+    func setLabelText(text: String) {
+        self.label.text = text
+        self.label.isHidden = false
+        self.imageView.isHidden = true
     }
 }
