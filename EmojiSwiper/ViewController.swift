@@ -83,6 +83,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
         emojisDataModel.addEmojiToGroup(imageData: imageData, orderNumber:selectedGroupOrderNumber!)
     }
     
+    internal func addEmoji(name: String) {
+        emojisDataModel.addEmojiToGroup(name: name, orderNumber: selectedGroupOrderNumber!)
+    }
+    
     // <UICollectionView>
     internal func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

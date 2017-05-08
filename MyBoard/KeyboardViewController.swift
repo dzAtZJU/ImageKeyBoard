@@ -43,7 +43,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         groupsShower.dataSource = self
         groupsShower.delegate = self
 
-        emojisShower.register(UINib(nibName: "CollectionViewImageCell", bundle: Bundle(for: CollectionViewImageCell.self)), forCellWithReuseIdentifier: "emojiCell")
+        emojisShower.register(UINib(nibName: "CollectionViewLabelImageCell", bundle: Bundle(for: CollectionViewLabelImageCell.self)), forCellWithReuseIdentifier: "emojiCell")
         groupsShower.register(UINib(nibName: "CollectionViewLabelCell", bundle: Bundle(for: CollectionViewLabelCell.self)), forCellWithReuseIdentifier: "groupTagCell")
         
         let groupsShowerLayout = groupsShower.collectionViewLayout as! UICollectionViewFlowLayout
@@ -106,10 +106,16 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView==emojisShower {
-            let cell = emojisShower.dequeueReusableCell(withReuseIdentifier: "emojiCell", for: indexPath) as! CollectionViewImageCell
+            let cell = emojisShower.dequeueReusableCell(withReuseIdentifier: "emojiCell", for: indexPath) as! CollectionViewLabelImageCell
             let emojis = emojisDataModel.getEmojisInGroup(orderNumber: indexPath.section)
             let emoji = emojis?[indexPath.row] as? EmojiMO
-            cell.setImage(imageData: emoji?.image as Data?)
+            if let imageData = emoji?.image {
+                cell.setImage(imageData: imageData as Data)
+            }
+            else {
+                cell.setText(emoji?.name)
+            }
+            
             return cell
         }
         else {

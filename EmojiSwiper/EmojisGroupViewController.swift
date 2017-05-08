@@ -47,6 +47,8 @@ class EmojisGroupViewController: UIViewController, UICollectionViewDataSource, U
                 emojisGroupView.reloadData()
         }
     }
+    
+    
     //Model
     var emojisGroup: EmojiGroupMO!
     var emojis: [EmojiMO] {

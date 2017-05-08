@@ -24,6 +24,17 @@ class CameraRollPhotosViewController: UIViewController, UICollectionViewDelegate
             let imageData = UIImageJPEGRepresentation(image!, 1)
             vc.addEmoji(imageData: imageData!)
         }
+        if let characters = unicodeEmojiTextField.text?.characters {
+            for emoji in characters {
+                vc.addEmoji(name: String(emoji))
+            }
+        }
+    }
+    
+    @IBOutlet weak var unicodeEmojiTextField: UITextField!
+    
+    @IBAction func inputDone() {
+        unicodeEmojiTextField.resignFirstResponder()
     }
     
     //Model
