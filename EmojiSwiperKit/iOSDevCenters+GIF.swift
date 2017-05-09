@@ -60,7 +60,7 @@ extension CGImageSource {
     /// Returns whether the image source contains an animated GIF.
     ///
     /// - returns: A boolean value that is `true` if the image source contains animated GIF data.
-    var isAnimatedGIF: Bool {
+    public var isAnimatedGIF: Bool {
         let isTypeGIF = UTTypeConformsTo(CGImageSourceGetType(self) ?? "" as CFString, kUTTypeGIF)
         let imageCount = CGImageSourceGetCount(self)
         return isTypeGIF != false && imageCount > 1
@@ -153,13 +153,17 @@ extension UIImage {
     }
     
     class func gcdForArray(array: Array<Int>) -> Int {
-        if array.isEmpty {
+        let filteredArray = array.filter { (ele) -> Bool in
+            ele>0
+        }
+        
+        if filteredArray.isEmpty {
             return 1
         }
         
-        var gcd = array[0]
+        var gcd = filteredArray[0]
         
-        for val in array {
+        for val in filteredArray {
             gcd = UIImage.gcdForPair(a: val, gcd)
         }
         

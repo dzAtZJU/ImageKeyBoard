@@ -18,7 +18,7 @@ class CameraRollPhotosViewController: UIViewController, UICollectionViewDelegate
     @IBAction func swipeBack(_ sender: UISwipeGestureRecognizer) {
         self.dismiss(animated: true)
         let vc = self.presentingViewController as! ViewController
-        for indexPath in selectedImageIndex {
+        for ( indexPath, _ ) in selectedImageIndex {
             let phasset = photosDataModel.assets[indexPath.row]
             PHImageManager.default().requestImageData(for: phasset, options: nil, resultHandler: { (data, dataUTI, _, _) in
                 print("image: \(dataUTI ?? "")")
@@ -53,7 +53,7 @@ class CameraRollPhotosViewController: UIViewController, UICollectionViewDelegate
         return model
     }()
     
-    var selectedImageIndex = Set<IndexPath>()
+    public var selectedImageIndex = [IndexPath: UInt8]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,9 +67,14 @@ class CameraRollPhotosViewController: UIViewController, UICollectionViewDelegate
         self.collectionView.reloadData()
     }
     
+    func selectOrderFor(indexPath: IndexPath) -> UInt8? {
+        return selectedImageIndex[indexPath]
+    }
+
+    
     // <UICollectionViewDelegate>
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        if selectedImageIndex.contains(indexPath) {
+        if let _ = selectedImageIndex[indexPath] {
             let cell = collectionView.cellForItem(at: indexPath) as! ImageCollectionViewCell
             cell.setSelected(false)
         }
@@ -82,11 +87,11 @@ class CameraRollPhotosViewController: UIViewController, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if selectedImageIndex.contains(indexPath) {
-            selectedImageIndex.remove(indexPath)
+        if let _ = selectedImageIndex[indexPath] {
+            selectedImageIndex.removeValue(forKey: indexPath)
         }
         else {
-            selectedImageIndex.insert(indexPath)
+            selectedImageIndex[indexPath] = UInt8(selectedImageIndex.count)
         }
     }
     

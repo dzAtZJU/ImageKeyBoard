@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import ImageIO
 
 internal class EmojiGroupCell: UICollectionViewCell {
     
@@ -22,7 +22,18 @@ internal class EmojiGroupCell: UICollectionViewCell {
     }
     
     func setImage(imageData: Data) {
+        /*
         self.setImage(UIImage(data: imageData))
+        */
+        let source = CGImageSourceCreateWithData(imageData as CFData, nil)!
+        var image: UIImage
+        if source.isAnimatedGIF {
+            image = UIImage.gifImageWithData(data: imageData as NSData)!
+        }
+        else {
+            image  = UIImage(data: imageData)!
+        }
+        self.setImage(image)
     }
     
     func setLabelText(text: String) {

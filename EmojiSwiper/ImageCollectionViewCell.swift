@@ -25,6 +25,7 @@ internal class ImageCollectionViewCell: UICollectionViewCell {
         }
         set {
             selectionOrderLabel.text = "\(newValue)"
+            setSelected(true)
         }
     }
     
@@ -35,7 +36,15 @@ internal class ImageCollectionViewCell: UICollectionViewCell {
     }
     
     func setImage(imageData: Data) {
-        self.setImage(UIImage(data: imageData))
+        let source = CGImageSourceCreateWithData(imageData as CFData, nil)!
+        let isGIF = source.isAnimatedGIF
+        if isGIF {
+            let image = UIImage.gifImageWithData(data: imageData as NSData)
+            self.setImage(image)
+        }
+        else {
+            self.setImage(UIImage(data: imageData))
+        }
     }
     
     func setUnicodeEmoji(emoji: String) {
@@ -48,10 +57,21 @@ internal class ImageCollectionViewCell: UICollectionViewCell {
         let phImageManager = PHImageManager.default()
         let options = PHImageRequestOptions()
         options.deliveryMode = .highQualityFormat
+        
         phImageManager.requestImage(for: asset, targetSize: bounds.size, contentMode: .aspectFit, options: options, resultHandler: {image, _ in
             self.setImage(image)
             }
         )
+    }
+    
+    func setGifImage(asset: PHAsset) {
+        let phImageManager = PHImageManager.default()
+        let options = PHImageRequestOptions()
+        options.deliveryMode = .highQualityFormat
+        
+        phImageManager.requestImageData(for: asset, options: options) { (data, _, _, _) in
+                self.setImage(imageData: data!)
+        }
     }
     
     func setLabelText(text: String) {

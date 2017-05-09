@@ -8,6 +8,7 @@
 
 import UIKit
 import EmojiSwiperKit
+import MobileCoreServices
 
 class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
 
@@ -130,7 +131,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         else {
             let cell = groupsShower.dequeueReusableCell(withReuseIdentifier: "groupTagCell", for: indexPath) as! CollectionViewLabelCell
             let group = emojiGroups[indexPath.row]
-            print("section\(group.tag)")
+            print("section\(String(describing: group.tag))")
             cell.setText(group.tag)
             print(indexPath.row)
             if selectedGroup == indexPath.row {
@@ -186,8 +187,11 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView==emojisShower {
             let cell = emojisShower.cellForItem(at: indexPath) as! CollectionViewLabelImageCell
-            if let image = cell.image {
-                pasteBoard.image = image
+            let emojiGroup = getGroup(indexPath: indexPath)
+            let emojis = emojiGroup.emojis
+            let emoji = emojis?[indexPath.row] as? EmojiMO
+            if let imageData = emoji?.image {
+                pasteBoard.setData(imageData as Data, forPasteboardType: kUTTypeGIF as String)
                 /*
                 print("Pasteboard width:\(smallImage.size.width) height:\(smallImage.size.height) scale: \(smallImage.scale) mode: \(smallImage.resizingMode.rawValue)")
                  */

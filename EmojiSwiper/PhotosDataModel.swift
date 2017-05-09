@@ -11,6 +11,7 @@ import Photos
 
 protocol PhotosDataModelDelegate {
     func fetchedPhotosDidChanged()
+    func selectOrderFor(indexPath: IndexPath) -> UInt8?
 }
 
 class PhotosDataModel: NSObject, UICollectionViewDataSource, PHPhotoLibraryChangeObserver{
@@ -65,7 +66,13 @@ class PhotosDataModel: NSObject, UICollectionViewDataSource, PHPhotoLibraryChang
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! ImageCollectionViewCell
-        cell.setImage(asset: assets[indexPath.row])
+        cell.setGifImage(asset: assets[indexPath.row])
+        if let selectedOrderNumber = delegate.selectOrderFor(indexPath: indexPath) {
+            cell.selectionOrder = selectedOrderNumber
+        }
+        else {
+            cell.setSelected(false)
+        }
         return cell
     }
     
@@ -74,7 +81,7 @@ class PhotosDataModel: NSObject, UICollectionViewDataSource, PHPhotoLibraryChang
         qqPhotosFetchResult.enumerateObjects(
             {assetCollection, index, stop in
                 let phFetchOptions = PHFetchOptions()
-                phFetchOptions.fetchLimit = 5
+                phFetchOptions.fetchLimit = 200
                 phFetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
                 let fecthedAssets = PHAsset.fetchAssets(in: assetCollection, options: phFetchOptions)
                 fecthedAssets.enumerateObjects(

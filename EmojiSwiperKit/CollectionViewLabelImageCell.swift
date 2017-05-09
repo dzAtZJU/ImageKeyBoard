@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ImageIO
 
 public class CollectionViewLabelImageCell: UICollectionViewCell {
     
@@ -34,8 +35,16 @@ public class CollectionViewLabelImageCell: UICollectionViewCell {
     }
     
     public func setImage(imageData: Data?) {
-        if let data = imageData {
-            self.setImage(UIImage(data: data))
+        if let imageData = imageData {
+            let source = CGImageSourceCreateWithData(imageData as CFData, nil)!
+            let isGIF = source.isAnimatedGIF
+            if isGIF {
+                let image = UIImage.gifImageWithData(data: imageData as NSData)
+                self.setImage(image)
+            }
+            else {
+                self.setImage(UIImage(data: imageData))
+            }
         }
     }
     
