@@ -19,6 +19,14 @@ public class CollectionViewLabelImageCell: UICollectionViewCell {
         label.isHidden = true
     }
     
+    public var image: UIImage? {
+        return imageView.image
+    }
+    
+    public var unicodeEmoji: String? {
+            return label.text
+    }
+    
     public func setText(_ text: String?) {
         label.text = text
         imageView.isHidden = true
@@ -31,18 +39,19 @@ public class CollectionViewLabelImageCell: UICollectionViewCell {
         }
     }
     
-    public var image: UIImage {
-        return imageView.image!
-    }
-    
     public func animate(selected: Bool) {
         if selected {
             layer.zPosition = 1
-            UIView.animate(withDuration: 0.4,
-                           delay: 0,
-                           options: .curveEaseInOut,
-                           animations: { self.transform = CGAffineTransform(scaleX: 1.5, y: 1.5) },completion: nil
-            )
+            UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: [.overrideInheritedOptions], animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: {
+                    self.transform = CGAffineTransform(scaleX: 2, y: 2)
+                })
+                UIView.addKeyframe(withRelativeStartTime: 0.9, relativeDuration: 0.1, animations: {
+                    self.transform = CGAffineTransform.identity
+                })
+            }, completion: { (_) in
+                self.layer.zPosition = 0
+            })
         }
         else {
             UIView.animate(withDuration: 0.6,

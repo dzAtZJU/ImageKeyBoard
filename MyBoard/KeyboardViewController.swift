@@ -9,7 +9,7 @@
 import UIKit
 import EmojiSwiperKit
 
-class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
+class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
 
     // View
     @IBOutlet var nextKeyboardButton: UIButton!
@@ -30,6 +30,13 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     // Model
     let emojisDataModel = EmojisDataModel.readEmojisDataModel()
     var selectedGroup: Int?
+    var groupSortBy = GroupsSortingKey.tag
+    var emojiGroups: [EmojiGroupMO] {
+        return emojisDataModel.getAllGroups(sortBy: groupSortBy)
+    }
+    private func getGroup(indexPath: IndexPath) -> EmojiGroupMO {
+        return emojiGroups[indexPath.section]
+    }
     
     // System
     let pasteBoard = UIPasteboard.general
@@ -82,7 +89,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     // <UICollectionViewDataSource>
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if collectionView==emojisShower {
-            let n = emojisDataModel.emojiGroups.count
+            let n = emojiGroups.count
                 return n
         }
         else {
@@ -92,14 +99,15 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView==emojisShower {
-            if let emos = emojisDataModel.emojiGroups[section].emojis {
+            if let emos = emojiGroups[section].emojis {
                 let n = emos.count
                 return n
             }
             return 0
         }
         else {
-            let n = emojisDataModel.emojiGroups.count
+            let n = emojiGroups.count
+            print("n:\(n)")
             return n
         }
     }
@@ -107,7 +115,8 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView==emojisShower {
             let cell = emojisShower.dequeueReusableCell(withReuseIdentifier: "emojiCell", for: indexPath) as! CollectionViewLabelImageCell
-            let emojis = emojisDataModel.getEmojisInGroup(orderNumber: indexPath.section)
+            let emojiGroup = getGroup(indexPath: indexPath)
+            let emojis = emojiGroup.emojis
             let emoji = emojis?[indexPath.row] as? EmojiMO
             if let imageData = emoji?.image {
                 cell.setImage(imageData: imageData as Data)
@@ -120,8 +129,16 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         }
         else {
             let cell = groupsShower.dequeueReusableCell(withReuseIdentifier: "groupTagCell", for: indexPath) as! CollectionViewLabelCell
-            let group = emojisDataModel.emojiGroups[indexPath.row]
+            let group = emojiGroups[indexPath.row]
+            print("section\(group.tag)")
             cell.setText(group.tag)
+            print(indexPath.row)
+            if selectedGroup == indexPath.row {
+                cell.animate(selected: true)
+            }
+            else {
+                cell.animate(selected: false)
+            }
             return cell
         }
     }
@@ -137,12 +154,47 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         return cell
     }
     
+    /*
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+    */
+    
     // <UICollectionViewDelegate>
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView==emojisShower {
-            let cell = emojisShower.cellForItem(at: indexPath) as! CollectionViewImageCell
-            let image = cell.image
-            pasteBoard.image = image
+            let cell = emojisShower.cellForItem(at: indexPath) as! CollectionViewLabelImageCell
+            if let image = cell.image {
+                pasteBoard.image = image
+                /*
+                print("Pasteboard width:\(smallImage.size.width) height:\(smallImage.size.height) scale: \(smallImage.scale) mode: \(smallImage.resizingMode.rawValue)")
+                 */
+            }
+            else {
+                self.textDocumentProxy.insertText(cell.unicodeEmoji!)
+            }
         }
         else {
             // Update Model
@@ -167,8 +219,9 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
 
         }
         else {
-            let groupCell = groupsShower.cellForItem(at: indexPath) as! CollectionViewLabelCell
-            groupCell.animate(selected: false)
+            if let groupCell = groupsShower.cellForItem(at: indexPath) as? CollectionViewLabelCell {
+                groupCell.animate(selected: false)
+            }
             
             // Unhighlight
             animateFooterInEmojisShower(groupOrderNumber: indexPath.row, animate: false)
@@ -179,30 +232,41 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         if collectionView==emojisShower {
-            let emojiCell = emojisShower.cellForItem(at: indexPath) as! CollectionViewImageCell
+            let emojiCell = emojisShower.cellForItem(at: indexPath) as! CollectionViewLabelImageCell
             emojiCell.animate(selected: true)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         if collectionView==emojisShower {
-            let emojiCell = emojisShower.cellForItem(at: indexPath) as! CollectionViewImageCell
-            emojiCell.animate(selected: false)
+            let emojiCell = emojisShower.cellForItem(at: indexPath) as! CollectionViewLabelImageCell
+            //emojiCell.animate(selected: false)
         }
     }
     
     /*
     // <UICollectionViewDelegateFlowLayout>
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        if collectionView == groupsShower {
-            
+        if collectionView == emojisShower {
+            let emojiGroup = getGroup(indexPath: indexPath)
+            let emojis = emojiGroup.emojis
+            let emoji = emojis?[indexPath.row] as? EmojiMO
+            if emoji?.image == nil{
+                return CGSize(width: 70, height: 70)
+            }
+            else {
+                return CGSize(width: 105, height: 105)
+            }
         }
-        return flowLayout.itemSize
+        else {
+            let flowlayout = collectionViewLayout as! UICollectionViewFlowLayout
+            return flowlayout.estimatedItemSize
+        }
     }
     */
     
     // <UIScrollViewDelegate>
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView==emojisShower {
             if let indexPathOfFirstCell = emojisShower.indexPathsForVisibleItems.first {

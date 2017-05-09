@@ -10,6 +10,11 @@ import Foundation
 import CoreData
 import UIKit
 
+public enum GroupsSortingKey: String {
+    case orderNumber = "orderNumber"
+    case tag = "tag"
+}
+
 public class EmojisDataModel {
     private static let groupIdentifier = "group.ind.weiran3120102776.EmojiSwiper2"
     
@@ -77,12 +82,16 @@ public class EmojisDataModel {
                 }
             }
         }
+        saveContext()
     }
     
     public var emojiGroups: [EmojiGroupMO] {
         return fetchAllGroups()
     }
     
+    public var emojiGroupsSortByTag: [EmojiGroupMO] {
+        return fetchAllGroups(sortBy: "tag")
+    }
     public func saveContext () {
         if managedObjectContext.hasChanges {
             do {
@@ -115,6 +124,8 @@ public class EmojisDataModel {
         emoji.image = imageData as NSData
         let group = fetchGroupObject(orderNumber: orderNumber)
         emoji.group = group
+        let count = group!.emojis!.count
+        print("after add emoji to group \(orderNumber): \(count)")
     }
     
     public func addEmojiToGroup(name: String, orderNumber: Int16) {
@@ -122,6 +133,8 @@ public class EmojisDataModel {
         emoji.name = name
         let group = fetchGroupObject(orderNumber: orderNumber)
         emoji.group = group
+        let count = group!.emojis!.count
+        print("after add emoji to group \(orderNumber): \(count)")
     }
     
     /*
@@ -143,8 +156,8 @@ public class EmojisDataModel {
         emojiObject.group = group
     }
     
-    public func getAllGroups() -> [EmojiGroupMO] {
-        return fetchAllGroups()
+    public func getAllGroups(sortBy: GroupsSortingKey = .orderNumber ) -> [EmojiGroupMO] {
+        return fetchAllGroups(sortBy: sortBy.rawValue)
     }
     
     public func deleteEmoji(emoji: EmojiMO) {
@@ -220,9 +233,9 @@ public class EmojisDataModel {
         }
     }
     
-    private func fetchAllGroups() -> [EmojiGroupMO] {
+    private func fetchAllGroups(sortBy: String = "orderNumber") -> [EmojiGroupMO] {
         let fectchRequest = NSFetchRequest<EmojiGroupMO>(entityName: "EmojiGroup")
-        fectchRequest.sortDescriptors = [NSSortDescriptor(key: "orderNumber", ascending: true)]
+        fectchRequest.sortDescriptors = [NSSortDescriptor(key: sortBy, ascending: true)]
         do {
             let fetchedGroups = try self.managedObjectContext.fetch(fectchRequest)
             return fetchedGroups

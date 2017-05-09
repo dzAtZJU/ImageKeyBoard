@@ -311,7 +311,7 @@
                                 <rect key="frame" x="0.0" y="85" width="375" height="77"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="inputDone" destination="vL4-hE-P5X" eventType="editingDidEndOnExit" id="Yfj-89-hqq"/>
                                 </connections>

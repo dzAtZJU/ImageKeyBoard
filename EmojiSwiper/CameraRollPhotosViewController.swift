@@ -19,10 +19,19 @@ class CameraRollPhotosViewController: UIViewController, UICollectionViewDelegate
         self.dismiss(animated: true)
         let vc = self.presentingViewController as! ViewController
         for indexPath in selectedImageIndex {
+            let phasset = photosDataModel.assets[indexPath.row]
+            PHImageManager.default().requestImageData(for: phasset, options: nil, resultHandler: { (data, dataUTI, _, _) in
+                print("image: \(dataUTI ?? "")")
+                vc.addEmoji(imageData: data!)
+                let uiImage = UIImage(data: data!)!
+                print("width: \(uiImage.size.width) height: \(uiImage.size.height)")
+            })
+            /*
             let imageCollectionViewCell = collectionView!.cellForItem(at: indexPath) as!ImageCollectionViewCell
             let image = imageCollectionViewCell.imageView.image
             let imageData = UIImageJPEGRepresentation(image!, 1)
             vc.addEmoji(imageData: imageData!)
+             */
         }
         if let characters = unicodeEmojiTextField.text?.characters {
             for emoji in characters {
