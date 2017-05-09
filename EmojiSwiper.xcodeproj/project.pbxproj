@@ -26,6 +26,7 @@
 		FC0AA2B61EB176F50084F96B /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2AF1EB176F50084F96B /* MyPageViewController.swift */; };
 		FC0AA2B71EB176F50084F96B /* PhotosDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2B01EB176F50084F96B /* PhotosDataModel.swift */; };
 		FC0AA2B81EB176F50084F96B /* EmojiGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2B11EB176F50084F96B /* EmojiGroupCell.swift */; };
+		FC7F34AA1EC1FCEF001D8B2D /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7F34A91EC1FCEF001D8B2D /* iOSDevCenters+GIF.swift */; };
 		FCA4AE0C1EB383C2001BEF35 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4AE0B1EB383C2001BEF35 /* KeyboardViewController.swift */; };
 		FCA4AE101EB383C2001BEF35 /* MyBoard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FCA4AE091EB383C2001BEF35 /* MyBoard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FCD3E7371EBBB9C500993D1F /* CollectionViewLiquidColorFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD3E7361EBBB9C500993D1F /* CollectionViewLiquidColorFooter.swift */; };
@@ -117,6 +118,7 @@
 		FC0AA2B01EB176F50084F96B /* PhotosDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosDataModel.swift; sourceTree = "<group>"; };
 		FC0AA2B11EB176F50084F96B /* EmojiGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiGroupCell.swift; sourceTree = "<group>"; };
 		FC0AA2B91EB178240084F96B /* EmojiSwiper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EmojiSwiper.entitlements; sourceTree = "<group>"; };
+		FC7F34A91EC1FCEF001D8B2D /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
 		FCA4AE091EB383C2001BEF35 /* MyBoard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyBoard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA4AE0B1EB383C2001BEF35 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		FCA4AE0D1EB383C2001BEF35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				FCEFFC7F1EB87F140011510F /* Model.xcdatamodeld */,
 				FCE2DC211EBEEC6D00AAB934 /* UnicodeEmoji.swift */,
 				FCE2DC231EBF125D00AAB934 /* Emojis.plist */,
+				FC7F34A91EC1FCEF001D8B2D /* iOSDevCenters+GIF.swift */,
 			);
 			path = EmojiSwiperKit;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC0AA2A21EB1748B0084F96B /* CollectionViewImageCell.swift in Sources */,
+				FC7F34AA1EC1FCEF001D8B2D /* iOSDevCenters+GIF.swift in Sources */,
 				FC0AA2A51EB174F10084F96B /* EmojisDataModel.swift in Sources */,
 				FC0AA2A61EB174F10084F96B /* EmoerDataBase.swift in Sources */,
 				FCE2DC291EC04E7B00AAB934 /* CollectionViewLabelImageCell.swift in Sources */,
