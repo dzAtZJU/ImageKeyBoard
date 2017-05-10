@@ -182,6 +182,20 @@ public class EmojisDataModel {
         return group.emojis
     }
     
+    public func getEmojiInGroup(orderNumber: Int16, emojiOrder: Int) -> EmojiMO {
+        var ids = fetchIdOfEmojisInGroup(orderNumber: orderNumber)
+        ids.sort { (a, b) -> Bool in
+            let r = a.compare(b, options: String.CompareOptions.numeric, range: nil, locale: nil)
+            if r == ComparisonResult.orderedDescending {
+                return true
+            }
+            return false
+        }
+        let id = ids[emojiOrder]
+        let emoji = fetchEmoji(groupOrderNumber: orderNumber, id: id)
+        return emoji
+    }
+    
     // [TODO]: load index from persistent; save index to persistent; Better data structure
     private class EmojiNameGenerator {
         static let maximum = 256
@@ -189,6 +203,31 @@ public class EmojisDataModel {
         fileprivate class func nextName() -> String {
             index = (index + 1) % maximum
             return "_anomoji\(index)"
+        }
+    }
+    
+    private func fetchIdOfEmojisInGroup(orderNumber: Int16) -> [String] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Emoji")
+        fetchRequest.propertiesToFetch = ["id"]
+        fetchRequest.predicate = NSPredicate(format: "group.orderNumber = %@ ", orderNumber)
+        do {
+            let fetchedDates = try self.managedObjectContext.fetch(fetchRequest)
+            return fetchedDates as! [String]
+        }
+        catch {
+            fatalError("Failed to fetch id of emojis in group: \(error)")
+        }
+    }
+    
+    private func fetchEmoji(groupOrderNumber: Int16, id: String) -> EmojiMO {
+        let fectchRequest = NSFetchRequest<EmojiMO>(entityName: "Emoji")
+        fectchRequest.predicate = NSPredicate(format: "(id like %@) AND (group.orderNumber == %@)", id, groupOrderNumber)
+        do {
+            let fetchedEmoji = try self.managedObjectContext.fetch(fectchRequest)
+            return fetchedEmoji[0]
+        }
+        catch {
+            fatalError("Failed to fetch emojis: \(error)")
         }
     }
     

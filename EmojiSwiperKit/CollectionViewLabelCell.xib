@@ -20,7 +20,7 @@
                 <subviews>
                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyg-Hs-Xhb">
                         <rect key="frame" x="0.0" y="0.0" width="62" height="40"/>
-                        <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="0.44528367158671589" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="0.20439345018450183" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="3yw-Ud-Ftk"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="62" id="upN-Zm-XbO"/>
@@ -29,7 +29,7 @@
                             <fragment content="Label">
                                 <attributes>
                                     <color key="NSColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <font key="NSFont" size="20" name="Chalkduster"/>
+                                    <font key="NSFont" size="20" name="ChalkboardSE-Regular"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>

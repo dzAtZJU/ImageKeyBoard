@@ -13,7 +13,7 @@ public class CollectionViewLiquidColorFooter: UICollectionReusableView {
     
     public func animate(highlight: Bool) {
         
-        let alpha = CGFloat(highlight ? 1 : 0.5)
+        let alpha = CGFloat(highlight ? 0.4 : 0.2)
         colorView.backgroundColor = colorView.backgroundColor?.withAlphaComponent(alpha)
     }
 }
