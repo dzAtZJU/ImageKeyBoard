@@ -74,6 +74,13 @@ extension CGImageSource {
         guard let imageProperties = CGImageSourceCopyPropertiesAtIndex(self, index, nil) as? [String: AnyObject] else { return nil }
         return imageProperties[String(kCGImagePropertyGIFDictionary)] as? GIFProperties
     }
+    
+    func size(at index: Int) -> CGSize? {
+        guard let imageProperties = CGImageSourceCopyPropertiesAtIndex(self, index, nil) as? [String: AnyObject] else { return nil }
+        let w = imageProperties[kCGImagePropertyPixelWidth as String] as! Int
+        let h = imageProperties[kCGImagePropertyPixelHeight as String] as! Int
+        return CGSize(width: w, height: h)
+    }
 }
 
 
@@ -170,19 +177,29 @@ extension UIImage {
         return gcd
     }
     
+    static let cgCreateImageOptions: [String: Any] = [kCGImageSourceShouldAllowFloat as String: kCFBooleanFalse, kCGImageSourceCreateThumbnailFromImageAlways as String: kCFBooleanTrue, kCGImageSourceThumbnailMaxPixelSize as String: 105]
+    
     class func animatedImageWithSource(source: CGImageSource) -> UIImage? {
         let count = CGImageSourceGetCount(source)
         var images = [CGImage]()
         var delays = [Int]()
         
         for i in 0..<count {
-            if let image = CGImageSourceCreateImageAtIndex(source, i, nil) {
+            if let image = CGImageSourceCreateThumbnailAtIndex(source, i, cgCreateImageOptions as CFDictionary) {
                 images.append(image)
             }
             
             let delaySeconds = UIImage.delayForImageAtIndex(index: Int(i),
                                                             source: source)
             delays.append(Int(delaySeconds * 1000.0)) // Seconds to ms
+        }
+        
+        var i = 1
+        for image in images {
+            let h = image.height
+            let w = image.width
+            print("\(i): \(w)*\(h)")
+            i += 1
         }
         
         let duration: Int = {

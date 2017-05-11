@@ -113,17 +113,21 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         }
     }
     
+    private func emojiAt(indexPath: IndexPath) -> EmojiMO {
+        let emojiGroup = getGroup(indexPath: indexPath)
+        let emoji = emojisDataModel.getEmojiInGroup(orderNumber: emojiGroup.orderNumber, emojiOrder: indexPath.row)
+        return emoji
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView==emojisShower {
             let cell = emojisShower.dequeueReusableCell(withReuseIdentifier: "emojiCell", for: indexPath) as! CollectionViewLabelImageCell
-            let emojiGroup = getGroup(indexPath: indexPath)
-            let emojis = emojiGroup.emojis
-            let emoji = emojis?[indexPath.row] as? EmojiMO
-            if let imageData = emoji?.image {
+            let emoji = emojiAt(indexPath: indexPath)
+            if let imageData = emoji.image {
                 cell.setImage(imageData: imageData as Data)
             }
             else {
-                cell.setText(emoji?.name)
+                cell.setText(emoji.name)
             }
             
             return cell
@@ -187,10 +191,8 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView==emojisShower {
             let cell = emojisShower.cellForItem(at: indexPath) as! CollectionViewLabelImageCell
-            let emojiGroup = getGroup(indexPath: indexPath)
-            let emojis = emojiGroup.emojis
-            let emoji = emojis?[indexPath.row] as? EmojiMO
-            if let imageData = emoji?.image {
+            let emoji = emojiAt(indexPath: indexPath)
+            if let imageData = emoji.image {
                 pasteBoard.setData(imageData as Data, forPasteboardType: kUTTypeGIF as String)
                 /*
                 print("Pasteboard width:\(smallImage.size.width) height:\(smallImage.size.height) scale: \(smallImage.scale) mode: \(smallImage.resizingMode.rawValue)")
@@ -206,8 +208,8 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
             
             // Scroll
             let indexPathForFirstEmoji = IndexPath(row: 0, section: indexPath.row)
-            emojisShower.scrollToItem(at: indexPathForFirstEmoji, at: UICollectionViewScrollPosition.left, animated: true)
-            groupsShower.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.left, animated: true)
+            emojisShower.scrollToItem(at: indexPathForFirstEmoji, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+            groupsShower.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
             
             // Highlight
             animateFooterInEmojisShower(groupOrderNumber: indexPath.row, animate: true)

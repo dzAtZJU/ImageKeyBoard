@@ -43,7 +43,10 @@ public class CollectionViewLabelImageCell: UICollectionViewCell {
                 self.setImage(image)
             }
             else {
-                self.setImage(UIImage(data: imageData))
+                let cgCreateImageOptions: [String: Any] = [kCGImageSourceShouldAllowFloat as String: kCFBooleanFalse, kCGImageSourceCreateThumbnailFromImageAlways as String: kCFBooleanTrue, kCGImageSourceThumbnailMaxPixelSize as String: 105, kCGImageSourceCreateThumbnailWithTransform as String: kCFBooleanTrue]
+                if let image = CGImageSourceCreateThumbnailAtIndex(source, 0, cgCreateImageOptions as CFDictionary) {
+                    self.setImage(UIImage(cgImage: image))
+                }
             }
         }
     }

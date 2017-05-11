@@ -117,23 +117,45 @@ public class EmojisDataModel {
         if tag != "" {
             group.tag = tag
         }
+        do {
+            try managedObjectContext.save()
+        }
+        catch {
+            fatalError("Failed to add group: \(error)")
+        }
     }
     
     public func addEmojiToGroup(imageData: Data, orderNumber: Int16) {
         let emoji = NSEntityDescription.insertNewObject(forEntityName: "Emoji", into: managedObjectContext) as! EmojiMO
         emoji.image = imageData as NSData
+        let id = generateEmojiIdInGroup(orderNumber: orderNumber)
+        emoji.id = id
         let group = fetchGroupObject(orderNumber: orderNumber)
         emoji.group = group
         let count = group!.emojis!.count
+        do {
+            try managedObjectContext.save()
+        }
+        catch {
+            fatalError("Failed to add group: \(error)")
+        }
         print("after add emoji to group \(orderNumber): \(count)")
     }
     
     public func addEmojiToGroup(name: String, orderNumber: Int16) {
         let emoji = NSEntityDescription.insertNewObject(forEntityName: "Emoji", into: managedObjectContext) as! EmojiMO
         emoji.name = name
+        let id = generateEmojiIdInGroup(orderNumber: orderNumber)
+        emoji.id = id
         let group = fetchGroupObject(orderNumber: orderNumber)
         emoji.group = group
         let count = group!.emojis!.count
+        do {
+            try managedObjectContext.save()
+        }
+        catch {
+            fatalError("Failed to add group: \(error)")
+        }
         print("after add emoji to group \(orderNumber): \(count)")
     }
     
@@ -148,12 +170,24 @@ public class EmojisDataModel {
     public func modifyEmojiName(originalName: String, to newName: String) {
         let emojiObject = fetchEmojiObject(originalName)
         emojiObject.name = newName
+        do {
+            try managedObjectContext.save()
+        }
+        catch {
+            fatalError("Failed to add group: \(error)")
+        }
     }
     
     public func moveEmojiToGroup(emojiName: String, orderNumber : Int16) {
         let emojiObject = fetchEmojiObject(emojiName)
         let group = fetchGroupObject(orderNumber: orderNumber)
         emojiObject.group = group
+        do {
+            try managedObjectContext.save()
+        }
+        catch {
+            fatalError("Failed to add group: \(error)")
+        }
     }
     
     public func getAllGroups(sortBy: GroupsSortingKey = .orderNumber ) -> [EmojiGroupMO] {
@@ -162,10 +196,22 @@ public class EmojisDataModel {
     
     public func deleteEmoji(emoji: EmojiMO) {
         managedObjectContext.delete(emoji)
+        do {
+            try managedObjectContext.save()
+        }
+        catch {
+            fatalError("Failed to add group: \(error)")
+        }
     }
     
     public func deleteGroup(group: EmojiGroupMO) {
         managedObjectContext.delete(group)
+        do {
+            try managedObjectContext.save()
+        }
+        catch {
+            fatalError("Failed to add group: \(error)")
+        }
     }
     
     public func deleteGroup(orderNumber: Int) {
@@ -175,6 +221,12 @@ public class EmojisDataModel {
             managedObjectContext.delete(hasGroup)
         }
         print("After delete group: \(emojiGroups.count)")
+        do {
+            try managedObjectContext.save()
+        }
+        catch {
+            fatalError("Failed to add group: \(error)")
+        }
     }
     
     public func getEmojisInGroup(orderNumber: Int) -> NSOrderedSet? {
@@ -206,22 +258,46 @@ public class EmojisDataModel {
         }
     }
     
+    private func generateEmojiIdInGroup(orderNumber: Int16) -> String {
+        let ids = fetchIdOfEmojisInGroup(orderNumber: orderNumber)
+        let seconds = "\(Date().timeIntervalSinceReferenceDate)"
+        if ids.contains(seconds) {
+            var max = "0"
+            for id in ids {
+                if seconds.commonPrefix(with: id) == seconds {
+                    max = id>max ? id : max
+                }
+            }
+            return max + "1"
+        }
+        else {
+            return seconds
+        }
+    }
+    
     private func fetchIdOfEmojisInGroup(orderNumber: Int16) -> [String] {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Emoji")
-        fetchRequest.propertiesToFetch = ["id"]
-        fetchRequest.predicate = NSPredicate(format: "group.orderNumber = %@ ", orderNumber)
+        
+        let fetchRequest = NSFetchRequest<EmojiMO>(entityName: "Emoji")
+        //fetchRequest.propertiesToFetch = ["id"]
+        fetchRequest.includesPropertyValues = false
+        fetchRequest.predicate = NSPredicate(format: "group.orderNumber == %@ ", argumentArray: [orderNumber])
         do {
-            let fetchedDates = try self.managedObjectContext.fetch(fetchRequest)
-            return fetchedDates as! [String]
+            let emojis = try self.managedObjectContext.fetch(fetchRequest)
+            var ids = [String]()
+            for emoji in emojis {
+                ids.append(emoji.id ?? "")
+            }
+            return ids
         }
         catch {
             fatalError("Failed to fetch id of emojis in group: \(error)")
         }
+ 
     }
     
     private func fetchEmoji(groupOrderNumber: Int16, id: String) -> EmojiMO {
         let fectchRequest = NSFetchRequest<EmojiMO>(entityName: "Emoji")
-        fectchRequest.predicate = NSPredicate(format: "(id like %@) AND (group.orderNumber == %@)", id, groupOrderNumber)
+        fectchRequest.predicate = NSPredicate(format: "(id like %@) AND (group.orderNumber == %@)", argumentArray: [id, groupOrderNumber])
         do {
             let fetchedEmoji = try self.managedObjectContext.fetch(fectchRequest)
             return fetchedEmoji[0]

@@ -20,7 +20,7 @@
                 <subviews>
                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyg-Hs-Xhb">
                         <rect key="frame" x="0.0" y="0.0" width="62" height="40"/>
-                        <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="0.20439345018450183" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="0.19701337638376384" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="3yw-Ud-Ftk"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="62" id="upN-Zm-XbO"/>
