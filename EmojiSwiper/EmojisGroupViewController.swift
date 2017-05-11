@@ -17,6 +17,7 @@ class EmojisGroupViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet var panGestRecog: UIPanGestureRecognizer!
     @IBOutlet var swipeGestRecog: UISwipeGestureRecognizer!
     @IBAction func moveEmoji(_ sender: UIPanGestureRecognizer) {
+        /*
         let location = sender.location(in:emojisGroupView)
         switch sender.state {
         case .began: if let location = emojisGroupView.indexPathForItem(at:location) {
@@ -26,6 +27,7 @@ class EmojisGroupViewController: UIViewController, UICollectionViewDataSource, U
         case .ended: emojisGroupView.endInteractiveMovement()
         default: break
         }
+         */
     }
     @IBAction func swipeBack(_ sender: UISwipeGestureRecognizer) {
         self.dismiss(animated: true, completion: nil)
@@ -46,6 +48,14 @@ class EmojisGroupViewController: UIViewController, UICollectionViewDataSource, U
                 vc.emojisDataModel.deleteEmoji(emoji: emojis[index.row])
                 emojisGroupView.reloadData()
         }
+        if emojis.isEmpty {
+            self.groupNameField.text = "deleted"
+            UIView.animate(withDuration: 1.5, animations: {
+                self.groupNameField.alpha = 0
+            }, completion: { _ in
+                self.dismiss(animated: true, completion: nil)
+            })
+        }
     }
     
     
@@ -54,11 +64,22 @@ class EmojisGroupViewController: UIViewController, UICollectionViewDataSource, U
     var emojis: [EmojiMO] {
         get {
             if let emojis = emojisGroup.emojis {
-                return Array(emojis) as! [EmojiMO]
+                var emojisArray = Array(emojis) as! [EmojiMO]
+                emojisArray.sort(by: { (a, b) -> Bool in
+                    if let a_id = a.id, let b_id = b.id {
+                        return a_id > b_id
+                    }
+                    return false
+                })
+                return emojisArray
             }
             return [EmojiMO]()
         }
     }
+    var vc: ViewController {
+        return self.presentingViewController as! ViewController
+    }
+
     
     //View Controller Life Cycle
     override func viewDidLoad() {
@@ -70,6 +91,18 @@ class EmojisGroupViewController: UIViewController, UICollectionViewDataSource, U
         groupNameField.text = emojisGroup.tag
         panGestRecog.require(toFail: swipeGestRecog)
         panGestRecog.require(toFail: swipeLeft)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let emojis = emojisGroup.emojis {
+            if emojis.count == 0 {
+                vc.deleteGroup()
+            }
+        }
+        else {
+            vc.deleteGroup()
+
+        }
     }
     
     //<UICollectionViewDataSource>

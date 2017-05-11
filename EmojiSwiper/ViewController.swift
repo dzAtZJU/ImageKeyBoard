@@ -70,6 +70,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        emojisDataModel.refresh()
         emojiGroupsView.reloadData()
     }
     
@@ -87,6 +88,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
         emojisDataModel.addEmojiToGroup(name: name, orderNumber: selectedGroupOrderNumber!)
     }
     
+    internal func deleteGroup() {
+        if let groupOrderNumber = selectedGroupOrderNumber {
+            emojisDataModel.deleteGroup(orderNumber: Int(groupOrderNumber))
+        }
+        emojisDataModel.saveContext()
+    }
+    
+    internal func isEmptyGroup() {
+        //let group
+    }
+    
     // <UICollectionView>
     internal func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -100,8 +112,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "emojiGroupCell", for: indexPath) as! EmojiGroupCell
         let group = emojiGroups[indexPath.row]
-        if let groupName = group.tag {
-            cell.setLabelText(text: groupName)
+        if group.tag != "" {
+            cell.setLabelText(text: group.tag!)
         }
         else {
             if let representativeEmoji = group.emojis?.lastObject as? EmojiMO {
@@ -193,6 +205,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if let _ = sender as? UIButton {
+            let dest = segue.destination as! CameraRollPhotosViewController
+            dest.isNewGroup = true
+        }
     }
 }

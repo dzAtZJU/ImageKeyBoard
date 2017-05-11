@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -196,9 +195,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ipm-tu-dPY">
-                                <rect key="frame" x="0.0" y="78" width="375" height="589"/>
+                                <rect key="frame" x="0.0" y="111" width="375" height="556"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99953407049179077" green="0.92003078940245397" blue="0.39146915163695745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.99953407049179077" green="0.92003078940245397" blue="0.39146915163695745" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="XHR-ZW-opk">
                                     <size key="itemSize" width="122" height="140"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -216,15 +215,15 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="line" placeholder="Group Tag" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ema-LA-ZYn">
-                                <rect key="frame" x="84" y="20" width="207" height="50"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="Group Tag" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="ema-LA-ZYn">
+                                <rect key="frame" x="84" y="42" width="207" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Group Tag">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.50196081400000003" blue="1" alpha="0.69858452490774903" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="35" name="Helvetica"/>
+                                            <font key="NSFont" size="35" name="ChalkboardSE-Regular"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -232,7 +231,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.99953407049999998" green="0.92003078940000005" blue="0.39146915160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="LP4-d6-P5x" appends="YES" id="BX5-fc-wrt"/>
@@ -271,7 +270,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="726" y="808"/>
+            <point key="canvasLocation" x="725.60000000000002" y="807.34632683658174"/>
         </scene>
         <!--Camera Roll Photos View Controller-->
         <scene sceneID="6S6-zD-WyQ">
@@ -286,8 +285,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bYt-ts-u7v">
-                                <rect key="frame" x="0.0" y="194" width="375" height="473"/>
-                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="200" width="375" height="467"/>
+                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="wBJ-9B-aBx">
                                     <size key="itemSize" width="122" height="122"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -305,21 +304,24 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="😀" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="coK-z8-kTk">
-                                <rect key="frame" x="60" y="85" width="255" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="💃" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="20" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="coK-z8-kTk">
+                                <rect key="frame" x="60" y="86" width="255" height="49"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="7xz-c5-W1U"/>
+                                </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="inputDone" destination="vL4-hE-P5X" eventType="editingDidEndOnExit" id="Yfj-89-hqq"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfB-sA-ev9">
-                                <rect key="frame" x="0.0" y="137" width="375" height="49"/>
-                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="110" y="143" width="154" height="49"/>
+                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="Lbw-6K-ed0"/>
+                                    <constraint firstAttribute="height" constant="49" id="SuP-sk-Un5"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Pick Photos">
@@ -349,21 +351,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="bYt-ts-u7v" firstAttribute="top" secondItem="tfB-sA-ev9" secondAttribute="bottom" constant="8" symbolic="YES" id="1oX-9i-4Ej"/>
+                            <constraint firstItem="coK-z8-kTk" firstAttribute="leading" secondItem="7pZ-jV-G38" secondAttribute="leading" id="46C-c9-OlX"/>
                             <constraint firstItem="7pZ-jV-G38" firstAttribute="top" secondItem="gG3-eJ-nMH" secondAttribute="bottom" constant="8" symbolic="YES" id="4TK-MB-xRE"/>
-                            <constraint firstAttribute="trailing" secondItem="coK-z8-kTk" secondAttribute="trailing" constant="60" id="9mH-E4-zR9"/>
-                            <constraint firstItem="tfB-sA-ev9" firstAttribute="leading" secondItem="RBK-N7-DpZ" secondAttribute="leadingMargin" constant="-16" id="DYd-yT-KCn"/>
-                            <constraint firstItem="coK-z8-kTk" firstAttribute="leading" secondItem="RBK-N7-DpZ" secondAttribute="leading" constant="60" id="LnM-6L-zmx"/>
-                            <constraint firstItem="tfB-sA-ev9" firstAttribute="top" secondItem="coK-z8-kTk" secondAttribute="bottom" constant="22" id="NgC-aN-e0g"/>
-                            <constraint firstItem="coK-z8-kTk" firstAttribute="leading" secondItem="bYt-ts-u7v" secondAttribute="leading" constant="60" id="RkD-qM-atR"/>
-                            <constraint firstItem="7pZ-jV-G38" firstAttribute="centerX" secondItem="coK-z8-kTk" secondAttribute="centerX" id="WkH-On-cgG"/>
-                            <constraint firstItem="coK-z8-kTk" firstAttribute="top" secondItem="7pZ-jV-G38" secondAttribute="bottom" constant="8" symbolic="YES" id="cue-N1-GUT"/>
-                            <constraint firstItem="bYt-ts-u7v" firstAttribute="top" secondItem="tfB-sA-ev9" secondAttribute="bottom" constant="8" id="eNB-c2-S0P"/>
+                            <constraint firstItem="coK-z8-kTk" firstAttribute="trailing" secondItem="7pZ-jV-G38" secondAttribute="trailing" id="4XE-yx-d6K"/>
+                            <constraint firstItem="tfB-sA-ev9" firstAttribute="top" secondItem="coK-z8-kTk" secondAttribute="bottom" constant="8" symbolic="YES" id="KLx-X4-zbA"/>
+                            <constraint firstItem="coK-z8-kTk" firstAttribute="centerX" secondItem="bYt-ts-u7v" secondAttribute="centerX" id="QxJ-sC-3YP"/>
+                            <constraint firstItem="coK-z8-kTk" firstAttribute="centerX" secondItem="RBK-N7-DpZ" secondAttribute="centerX" id="VMx-vF-uJ5"/>
                             <constraint firstItem="bYt-ts-u7v" firstAttribute="bottom" secondItem="CdQ-6W-eF9" secondAttribute="top" id="fa8-Rk-nRc"/>
-                            <constraint firstItem="coK-z8-kTk" firstAttribute="trailing" secondItem="bYt-ts-u7v" secondAttribute="trailing" constant="-60" id="gvP-yi-soH"/>
-                            <constraint firstItem="coK-z8-kTk" firstAttribute="centerX" secondItem="tfB-sA-ev9" secondAttribute="centerX" id="msx-0H-mYf"/>
+                            <constraint firstItem="coK-z8-kTk" firstAttribute="top" secondItem="7pZ-jV-G38" secondAttribute="bottom" constant="9" id="hhT-5C-80p"/>
+                            <constraint firstItem="bYt-ts-u7v" firstAttribute="leading" secondItem="RBK-N7-DpZ" secondAttribute="leading" id="nfV-jN-HWV"/>
+                            <constraint firstItem="tfB-sA-ev9" firstAttribute="centerX" secondItem="bYt-ts-u7v" secondAttribute="centerX" id="uVJ-2f-shf"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="fX3-uA-f0m" appends="YES" id="MOr-tl-IjX"/>

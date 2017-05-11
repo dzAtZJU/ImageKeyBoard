@@ -86,13 +86,13 @@ extension CGImageSource {
 
 extension UIImage {
     
-    public class func gifImageWithData(data: NSData) -> UIImage? {
+    public class func gifImageWithData(data: NSData, optimizeForMemoryOrCPU: Bool = true) -> UIImage? {
         guard let source = CGImageSourceCreateWithData(data, nil) else {
             print("image doesn't exist")
             return nil
         }
         
-        return UIImage.animatedImageWithSource(source: source)
+        return UIImage.animatedImageWithSource(source: source, optimizeFormemoryOrCPU: optimizeForMemoryOrCPU)
     }
     
     public class func gifImageWithURL(gifUrl:String) -> UIImage? {
@@ -177,16 +177,23 @@ extension UIImage {
         return gcd
     }
     
-    static let cgCreateImageOptions: [String: Any] = [kCGImageSourceShouldAllowFloat as String: kCFBooleanFalse, kCGImageSourceCreateThumbnailFromImageAlways as String: kCFBooleanTrue, kCGImageSourceThumbnailMaxPixelSize as String: 105]
+    static let cgCreateImageOptions: [String: Any] = [kCGImageSourceShouldAllowFloat as String: kCFBooleanFalse, kCGImageSourceCreateThumbnailFromImageIfAbsent as String: kCFBooleanTrue, kCGImageSourceThumbnailMaxPixelSize as String: 105, kCGImageSourceShouldCache as String: kCFBooleanTrue]
     
-    class func animatedImageWithSource(source: CGImageSource) -> UIImage? {
+    class func animatedImageWithSource(source: CGImageSource, optimizeFormemoryOrCPU: Bool = true) -> UIImage? {
         let count = CGImageSourceGetCount(source)
         var images = [CGImage]()
         var delays = [Int]()
         
         for i in 0..<count {
-            if let image = CGImageSourceCreateThumbnailAtIndex(source, i, cgCreateImageOptions as CFDictionary) {
-                images.append(image)
+            if optimizeFormemoryOrCPU {
+                if let image = CGImageSourceCreateThumbnailAtIndex(source, i, cgCreateImageOptions as CFDictionary) {
+                    images.append(image)
+                }
+            }
+            else {
+                if let image = CGImageSourceCreateImageAtIndex(source, i, cgCreateImageOptions as CFDictionary) {
+                    images.append(image)
+                }
             }
             
             let delaySeconds = UIImage.delayForImageAtIndex(index: Int(i),

@@ -35,11 +35,11 @@ internal class ImageCollectionViewCell: UICollectionViewCell {
         self.unicodeEmojiLabel.isHidden = true
     }
     
-    func setImage(imageData: Data) {
+    func setImage(imageData: Data, optimizeForMemoryOrCPU: Bool = true) {
         let source = CGImageSourceCreateWithData(imageData as CFData, nil)!
         let isGIF = source.isAnimatedGIF
         if isGIF {
-            let image = UIImage.gifImageWithData(data: imageData as NSData)
+            let image = UIImage.gifImageWithData(data: imageData as NSData,  optimizeForMemoryOrCPU: optimizeForMemoryOrCPU)
             self.setImage(image)
         }
         else {
@@ -64,13 +64,13 @@ internal class ImageCollectionViewCell: UICollectionViewCell {
         )
     }
     
-    func setGifImage(asset: PHAsset) {
+    func setGifImage(asset: PHAsset,  optimizeForMemoryOrCPU: Bool = true) {
         let phImageManager = PHImageManager.default()
         let options = PHImageRequestOptions()
         options.deliveryMode = .highQualityFormat
         
         phImageManager.requestImageData(for: asset, options: options) { (data, _, _, _) in
-                self.setImage(imageData: data!)
+                self.setImage(imageData: data!,  optimizeForMemoryOrCPU: optimizeForMemoryOrCPU)
         }
     }
     

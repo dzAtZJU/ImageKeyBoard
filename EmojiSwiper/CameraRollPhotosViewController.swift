@@ -18,8 +18,11 @@ class CameraRollPhotosViewController: UIViewController, UICollectionViewDelegate
     @IBAction func swipeBack(_ sender: UISwipeGestureRecognizer) {
         self.dismiss(animated: true)
         let vc = self.presentingViewController as! ViewController
+        if selectedImageIndex.isEmpty && isNewGroup {
+            vc.deleteGroup()
+        }
         for ( indexPath, _ ) in selectedImageIndex {
-            let phasset = photosDataModel.assets[indexPath.row]
+            let phasset = photosDataModel.assets![indexPath.row]
             PHImageManager.default().requestImageData(for: phasset, options: nil, resultHandler: { (data, dataUTI, _, _) in
                 print("image: \(dataUTI ?? "")")
                 vc.addEmoji(imageData: data!)
@@ -52,6 +55,8 @@ class CameraRollPhotosViewController: UIViewController, UICollectionViewDelegate
         model.delegate = self
         return model
     }()
+    
+    var isNewGroup: Bool = false
     
     public var selectedImageIndex = [IndexPath: UInt8]()
     

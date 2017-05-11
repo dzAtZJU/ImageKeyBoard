@@ -15,8 +15,10 @@ protocol PhotosDataModelDelegate {
 }
 
 class PhotosDataModel: NSObject, UICollectionViewDataSource, PHPhotoLibraryChangeObserver{
+    
     override init() {
         super.init()
+        assets = _assets
         PHPhotoLibrary.shared().register(self)
     }
     
@@ -33,14 +35,21 @@ class PhotosDataModel: NSObject, UICollectionViewDataSource, PHPhotoLibraryChang
     
     var delegate: PhotosDataModelDelegate!
     
-    var assets: [PHAsset] {
+    var _assets: [PHAsset] {
         get {
             var _assets = [PHAsset]()
             _assets += fetchQQPhotos() + fetchRecentlyAddedPhotos()
-            _assets = Array(Set(_assets))
+            _assets.sort { (a, b) -> Bool in
+                if let a_date = a.modificationDate, let b_date = b.modificationDate {
+                    return a_date > b_date
+                }
+                return false
+            }
             return _assets
         }
     }
+    
+    var assets: [PHAsset]?
     
     // <PHPhotoLibraryChangeObserver>
     func photoLibraryDidChange(_ changeInstance: PHChange) {
@@ -53,6 +62,7 @@ class PhotosDataModel: NSObject, UICollectionViewDataSource, PHPhotoLibraryChang
             }
             delegate.fetchedPhotosDidChanged()
         }
+        assets = _assets
     }
     
     // <CollectionViewDataSource>
@@ -61,12 +71,12 @@ class PhotosDataModel: NSObject, UICollectionViewDataSource, PHPhotoLibraryChang
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return assets.count
+        return assets!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! ImageCollectionViewCell
-        cell.setGifImage(asset: assets[indexPath.row])
+        cell.setGifImage(asset: assets![indexPath.row],  optimizeForMemoryOrCPU: false)
         if let selectedOrderNumber = delegate.selectOrderFor(indexPath: indexPath) {
             cell.selectionOrder = selectedOrderNumber
         }
@@ -99,7 +109,7 @@ class PhotosDataModel: NSObject, UICollectionViewDataSource, PHPhotoLibraryChang
         recentPhotosFetchResult.enumerateObjects(
             {assetCollection, index, stop in
                 let phFetchOptions = PHFetchOptions()
-                phFetchOptions.fetchLimit = 10
+                phFetchOptions.fetchLimit = 20
                 phFetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
                 let fecthedAssets = PHAsset.fetchAssets(in: assetCollection, options: phFetchOptions)
                 fecthedAssets.enumerateObjects(

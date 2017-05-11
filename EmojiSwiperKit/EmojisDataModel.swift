@@ -114,9 +114,7 @@ public class EmojisDataModel {
     public func addGroup(orderNumber: Int16, tag: String = "") {
         let group = NSEntityDescription.insertNewObject(forEntityName: "EmojiGroup", into: managedObjectContext) as! EmojiGroupMO
         group.orderNumber = orderNumber
-        if tag != "" {
-            group.tag = tag
-        }
+        group.tag = tag
         do {
             try managedObjectContext.save()
         }
@@ -258,7 +256,7 @@ public class EmojisDataModel {
         }
     }
     
-    private func generateEmojiIdInGroup(orderNumber: Int16) -> String {
+    public func generateEmojiIdInGroup(orderNumber: Int16) -> String {
         let ids = fetchIdOfEmojisInGroup(orderNumber: orderNumber)
         let seconds = "\(Date().timeIntervalSinceReferenceDate)"
         if ids.contains(seconds) {

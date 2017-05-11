@@ -65,6 +65,10 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         groupsShower.reloadData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        emojisDataModel.saveContext()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated
@@ -201,6 +205,8 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
             else {
                 self.textDocumentProxy.insertText(cell.unicodeEmoji!)
             }
+            emoji.id = emojisDataModel.generateEmojiIdInGroup(orderNumber: Int16(indexPath.section))
+            emojisShower.reloadData()
         }
         else {
             // Update Model
