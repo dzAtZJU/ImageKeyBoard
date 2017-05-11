@@ -55,7 +55,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     //Model
     let emojisDataModel = EmojisDataModel(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
     var emojiGroups: [EmojiGroupMO] {
-        return emojisDataModel.getAllGroups()
+        return emojisDataModel.getAllGroups(sortBy: GroupsSortingKey.tagLatin)
     }
     
     //View -> Vontroller -> Model Information Flow

@@ -18,7 +18,7 @@ public class CollectionViewLabelCell: UICollectionViewCell {
     
     public func animate(selected: Bool) {
         
-        let alpha = CGFloat(selected ? 0.4 : 0.2)
+        let alpha = CGFloat(selected ? 1 : 0.7)
         
         label.backgroundColor = label.backgroundColor?.withAlphaComponent(alpha)
     }

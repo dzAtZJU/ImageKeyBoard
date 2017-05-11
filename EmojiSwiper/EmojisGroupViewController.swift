@@ -133,6 +133,7 @@ class EmojisGroupViewController: UIViewController, UICollectionViewDataSource, U
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         emojisGroup.tag = groupNameField.text
+        emojisGroup.tagLatin = groupNameField.text?.mandrainToLatin()
     }
     
     //<UITextFieldDelegate>

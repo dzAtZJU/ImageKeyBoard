@@ -13,7 +13,7 @@ import MobileCoreServices
 class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
 
     // View
-    @IBOutlet var nextKeyboardButton: UIButton!
+    @IBOutlet weak var nextKeyboardButton: UIButton!
     @IBOutlet weak var emojisShower: UICollectionView!
     @IBOutlet weak var groupsShower: UICollectionView!
     
@@ -31,7 +31,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     // Model
     let emojisDataModel = EmojisDataModel.readEmojisDataModel()
     var selectedGroup: Int?
-    var groupSortBy = GroupsSortingKey.tag
+    var groupSortBy = GroupsSortingKey.tagLatin
     var emojiGroups: [EmojiGroupMO] {
         return emojisDataModel.getAllGroups(sortBy: groupSortBy)
     }

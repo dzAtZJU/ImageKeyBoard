@@ -10,9 +10,22 @@ import Foundation
 import CoreData
 import UIKit
 
+extension String {
+    public func mandrainToLatin() -> String {
+        if let latin = self.applyingTransform(StringTransform.toLatin, reverse: false)?.applyingTransform(StringTransform.stripDiacritics, reverse: false)
+        {
+            let latinSpaceRemoved = latin.characters.split{ $0 == " "}.map(String.init).joined(separator:"")
+            print(latinSpaceRemoved)
+            return latinSpaceRemoved
+        }
+        return ""
+    }
+}
+
 public enum GroupsSortingKey: String {
     case orderNumber = "orderNumber"
     case tag = "tag"
+    case tagLatin = "tagLatin"
 }
 
 public class EmojisDataModel {
@@ -115,6 +128,7 @@ public class EmojisDataModel {
         let group = NSEntityDescription.insertNewObject(forEntityName: "EmojiGroup", into: managedObjectContext) as! EmojiGroupMO
         group.orderNumber = orderNumber
         group.tag = tag
+        group.tagLatin = tag.mandrainToLatin()
         do {
             try managedObjectContext.save()
         }
@@ -189,7 +203,8 @@ public class EmojisDataModel {
     }
     
     public func getAllGroups(sortBy: GroupsSortingKey = .orderNumber ) -> [EmojiGroupMO] {
-        return fetchAllGroups(sortBy: sortBy.rawValue)
+        var emojiGroups = fetchAllGroups(sortBy: sortBy.rawValue)
+        return emojiGroups
     }
     
     public func deleteEmoji(emoji: EmojiMO) {
