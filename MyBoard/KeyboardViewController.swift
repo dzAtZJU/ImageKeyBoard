@@ -22,7 +22,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         
         // Add custom view sizing constraints here
         
-        let viewHeightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 250)
+        let viewHeightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 258)
             viewHeightConstraint.priority = 999
         view.addConstraint(viewHeightConstraint)
     
@@ -56,6 +56,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         
         let groupsShowerLayout = groupsShower.collectionViewLayout as! UICollectionViewFlowLayout
         groupsShowerLayout.estimatedItemSize = CGSize(width: 62, height: 40)
+        groupsShowerLayout.itemSize = CGSize(width: 62, height: 40)
         
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
     }
@@ -65,13 +66,20 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         groupsShower.reloadData()
     }
     
+    /*
     override func viewWillDisappear(_ animated: Bool) {
         emojisDataModel.saveContext()
     }
-    
+ 
+    override func viewDidDisappear(_ animated: Bool) {
+        emojisDataModel.saveContext()
+    }
+     */
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated
+        print("Memory Warning")
     }
     
     override func textWillChange(_ textInput: UITextInput?) {
@@ -206,7 +214,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
                 self.textDocumentProxy.insertText(cell.unicodeEmoji!)
             }
             emoji.id = emojisDataModel.generateEmojiIdInGroup(orderNumber: Int16(indexPath.section))
-            emojisShower.reloadData()
+            emojisDataModel.saveContext()
         }
         else {
             // Update Model
@@ -214,7 +222,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
             
             // Scroll
             let indexPathForFirstEmoji = IndexPath(row: 0, section: indexPath.row)
-            emojisShower.scrollToItem(at: indexPathForFirstEmoji, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+            emojisShower.scrollToItem(at: indexPathForFirstEmoji, at: UICollectionViewScrollPosition.left, animated: true)
             groupsShower.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
             
             // Highlight
@@ -228,7 +236,6 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView==emojisShower {
-
         }
         else {
             if let groupCell = groupsShower.cellForItem(at: indexPath) as? CollectionViewLabelCell {
@@ -252,7 +259,10 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         if collectionView==emojisShower {
             let emojiCell = emojisShower.cellForItem(at: indexPath) as! CollectionViewLabelImageCell
-            //emojiCell.animate(selected: false)
+            emojiCell.animate(selected: false) { _ in
+                emojiCell.layer.zPosition = 0
+                self.emojisShower.reloadData()
+            }
         }
     }
     

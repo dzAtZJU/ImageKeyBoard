@@ -18,16 +18,18 @@ public class CollectionViewLabelCell: UICollectionViewCell {
     
     public func animate(selected: Bool) {
         
-        let alpha = CGFloat(selected ? 1 : 0.7)
+        let alpha = CGFloat(selected ? 0.6 : 1)
         
         label.backgroundColor = label.backgroundColor?.withAlphaComponent(alpha)
     }
     
+    /*
     override public func sizeThatFits(_ size: CGSize) -> CGSize {
         if let stringSize = label.attributedText?.size() {
             return stringSize
         }
         return size
     }
+ */
     
 }

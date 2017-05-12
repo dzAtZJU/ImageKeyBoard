@@ -71,6 +71,13 @@ class EmojisGroupViewController: UIViewController, UICollectionViewDataSource, U
                     }
                     return false
                 })
+                
+                print("#")
+                for e in emojisArray {
+                    print(e.id!)
+                }
+                print("#")
+
                 return emojisArray
             }
             return [EmojiMO]()
@@ -111,6 +118,7 @@ class EmojisGroupViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("\(emojis.count) emojis")
         return emojis.count
     }
     

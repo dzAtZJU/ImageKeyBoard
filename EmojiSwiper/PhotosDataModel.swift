@@ -60,9 +60,9 @@ class PhotosDataModel: NSObject, UICollectionViewDataSource, PHPhotoLibraryChang
             if let changes = changeInstance.changeDetails(for: recentPhotosFetchResult) {
                 recentPhotosFetchResult = changes.fetchResultAfterChanges
             }
+            assets = _assets
             delegate.fetchedPhotosDidChanged()
         }
-        assets = _assets
     }
     
     // <CollectionViewDataSource>

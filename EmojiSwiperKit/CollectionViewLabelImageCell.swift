@@ -51,6 +51,26 @@ public class CollectionViewLabelImageCell: UICollectionViewCell {
         }
     }
     
+    public func animate(selected: Bool, completion: ((Bool) -> Void)? = nil) {
+        if selected {
+            layer.zPosition = 1
+            UIView.animate(withDuration: 0.75,
+                           delay: 0,
+                           options: .curveEaseInOut,
+                           animations: { self.transform = CGAffineTransform(scaleX: 2, y: 2) },
+                           completion: completion
+            )
+        }
+        else {
+            UIView.animate(withDuration: 0.75,
+                           delay: 0,
+                           options: .curveEaseInOut,
+                           animations: { self.transform = CGAffineTransform.identity },
+                           completion: completion
+            )
+        }
+    }
+    /*
     public func animate(selected: Bool) {
         if selected {
             layer.zPosition = 1
@@ -74,4 +94,5 @@ public class CollectionViewLabelImageCell: UICollectionViewCell {
             )
         }
     }
+   */
 }

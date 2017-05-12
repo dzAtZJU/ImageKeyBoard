@@ -70,6 +70,7 @@ public class EmojisDataModel {
         var applicationDocumentsDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)!
         applicationDocumentsDirectory.appendPathComponent("EmojiSwiper2")
         let storeDescription = NSPersistentStoreDescription(url: applicationDocumentsDirectory)
+        storeDescription.isReadOnly = false
         let defaultContainer = NSPersistentContainer(name: "Model")
         defaultContainer.persistentStoreDescriptions = [storeDescription]
         defaultContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in

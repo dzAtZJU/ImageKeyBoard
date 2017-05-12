@@ -35,10 +35,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     @IBAction func deleteGroup(_ sender: UISwipeGestureRecognizer) {
         if let index = emojiGroupsView.indexPathForItem(at: sender.location(in: emojiGroupsView)) {
             let groupAmount = emojiGroups.count
-            emojisDataModel.deleteGroup(orderNumber: index.row)
+            let orderNumber = emojiGroups[index.row].orderNumber
+            emojisDataModel.deleteGroup(orderNumber: Int(orderNumber))
             if index.row+1 < groupAmount {
                 for i in index.row+1..<groupAmount {
-                    emojiGroups[i-1].orderNumber -= 1
+                    emojiGroupsByOrderNumber[i-1].orderNumber -= 1
                 }
             }
             emojiGroupsView.reloadData()
@@ -46,7 +47,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     }
     func swipe(_ sender: UISwipeGestureRecognizer) {
         let cell = sender.view as! EmojiGroupCell
-        let groupOrderNumber = emojiGroupsView.indexPath(for: cell)!.row
+        let groupOrderNumber: Int = emojiGroupsView.indexPath(for: cell)!.row
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "emojisGroupView") as! EmojisGroupViewController
         vc.emojisGroup = emojiGroups[groupOrderNumber]
         self.present(vc, animated: true, completion: nil)
@@ -56,6 +57,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     let emojisDataModel = EmojisDataModel(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
     var emojiGroups: [EmojiGroupMO] {
         return emojisDataModel.getAllGroups(sortBy: GroupsSortingKey.tagLatin)
+    }
+    var emojiGroupsByOrderNumber: [EmojiGroupMO] {
+        return emojisDataModel.getAllGroups(sortBy: .orderNumber)
     }
     
     //View -> Vontroller -> Model Information Flow
@@ -81,16 +85,19 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     
     //
     internal func addEmoji(imageData: Data) {
-        emojisDataModel.addEmojiToGroup(imageData: imageData, orderNumber:selectedGroupOrderNumber!)
+        let orderNumber = emojiGroups[Int(selectedGroupOrderNumber!)].orderNumber
+        emojisDataModel.addEmojiToGroup(imageData: imageData, orderNumber: orderNumber)
     }
     
     internal func addEmoji(name: String) {
-        emojisDataModel.addEmojiToGroup(name: name, orderNumber: selectedGroupOrderNumber!)
+        let orderNumber = emojiGroups[Int(selectedGroupOrderNumber!)].orderNumber
+        emojisDataModel.addEmojiToGroup(name: name, orderNumber: orderNumber)
     }
     
     internal func deleteGroup() {
         if let groupOrderNumber = selectedGroupOrderNumber {
-            emojisDataModel.deleteGroup(orderNumber: Int(groupOrderNumber))
+            let orderNumber = emojiGroups[Int(groupOrderNumber)].orderNumber
+            emojisDataModel.deleteGroup(orderNumber: Int(orderNumber))
         }
         emojisDataModel.saveContext()
     }
