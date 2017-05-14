@@ -39,6 +39,7 @@ class PhotosDataModel: NSObject, UICollectionViewDataSource, PHPhotoLibraryChang
         get {
             var _assets = [PHAsset]()
             _assets += fetchQQPhotos() + fetchRecentlyAddedPhotos()
+            _assets = Array(Set(_assets))
             _assets.sort { (a, b) -> Bool in
                 if let a_date = a.modificationDate, let b_date = b.modificationDate {
                     return a_date > b_date
@@ -105,11 +106,12 @@ class PhotosDataModel: NSObject, UICollectionViewDataSource, PHPhotoLibraryChang
     }
     
     private func fetchRecentlyAddedPhotos() -> [PHAsset] {
+        
         var recentlyAddedAssets = [PHAsset]()
         recentPhotosFetchResult.enumerateObjects(
             {assetCollection, index, stop in
                 let phFetchOptions = PHFetchOptions()
-                phFetchOptions.fetchLimit = 20
+                phFetchOptions.fetchLimit = 3
                 phFetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
                 let fecthedAssets = PHAsset.fetchAssets(in: assetCollection, options: phFetchOptions)
                 fecthedAssets.enumerateObjects(

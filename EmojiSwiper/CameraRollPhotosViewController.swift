@@ -25,7 +25,7 @@ class CameraRollPhotosViewController: UIViewController, UICollectionViewDelegate
             let phasset = photosDataModel.assets![indexPath.row]
             PHImageManager.default().requestImageData(for: phasset, options: nil, resultHandler: { (data, dataUTI, _, _) in
                 print("image: \(dataUTI ?? "")")
-                vc.addEmoji(imageData: data!)
+                vc.addEmoji(imageData: data!, self.isNewGroup)
                 let uiImage = UIImage(data: data!)!
                 print("width: \(uiImage.size.width) height: \(uiImage.size.height)")
             })
@@ -38,7 +38,7 @@ class CameraRollPhotosViewController: UIViewController, UICollectionViewDelegate
         }
         if let characters = unicodeEmojiTextField.text?.characters {
             for emoji in characters {
-                vc.addEmoji(name: String(emoji))
+                vc.addEmoji(name: String(emoji), isNewGroup)
             }
         }
     }

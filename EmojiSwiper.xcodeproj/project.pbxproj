@@ -28,7 +28,7 @@
 		FC0AA2B81EB176F50084F96B /* EmojiGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0AA2B11EB176F50084F96B /* EmojiGroupCell.swift */; };
 		FC7F34AA1EC1FCEF001D8B2D /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7F34A91EC1FCEF001D8B2D /* iOSDevCenters+GIF.swift */; };
 		FCA4AE0C1EB383C2001BEF35 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4AE0B1EB383C2001BEF35 /* KeyboardViewController.swift */; };
-		FCA4AE101EB383C2001BEF35 /* MyBoard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FCA4AE091EB383C2001BEF35 /* MyBoard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FCA4AE101EB383C2001BEF35 /* EmojisGrouper.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FCA4AE091EB383C2001BEF35 /* EmojisGrouper.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FCD3E7371EBBB9C500993D1F /* CollectionViewLiquidColorFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD3E7361EBBB9C500993D1F /* CollectionViewLiquidColorFooter.swift */; };
 		FCD824441EB39EE000808A27 /* MyKeyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCD824431EB39EE000808A27 /* MyKeyboard.storyboard */; };
 		FCD824461EB4665F00808A27 /* EmojisPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD824451EB4665F00808A27 /* EmojisPicker.swift */; };
@@ -88,7 +88,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				FCA4AE101EB383C2001BEF35 /* MyBoard.appex in Embed App Extensions */,
+				FCA4AE101EB383C2001BEF35 /* EmojisGrouper.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,7 +96,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FC0AA2721EB174160084F96B /* EmojiSwiper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiSwiper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC0AA2721EB174160084F96B /* GroupEmojis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupEmojis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC0AA2751EB174160084F96B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC0AA2771EB174160084F96B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FC0AA2821EB174160084F96B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 		FC0AA2B11EB176F50084F96B /* EmojiGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiGroupCell.swift; sourceTree = "<group>"; };
 		FC0AA2B91EB178240084F96B /* EmojiSwiper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EmojiSwiper.entitlements; sourceTree = "<group>"; };
 		FC7F34A91EC1FCEF001D8B2D /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
-		FCA4AE091EB383C2001BEF35 /* MyBoard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyBoard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA4AE091EB383C2001BEF35 /* EmojisGrouper.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EmojisGrouper.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA4AE0B1EB383C2001BEF35 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		FCA4AE0D1EB383C2001BEF35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCD3E7361EBBB9C500993D1F /* CollectionViewLiquidColorFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLiquidColorFooter.swift; sourceTree = "<group>"; };
@@ -175,9 +175,9 @@
 		FC0AA2731EB174160084F96B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FC0AA2721EB174160084F96B /* EmojiSwiper.app */,
+				FC0AA2721EB174160084F96B /* GroupEmojis.app */,
 				FC0AA28F1EB174600084F96B /* EmojiSwiperKit.framework */,
-				FCA4AE091EB383C2001BEF35 /* MyBoard.appex */,
+				FCA4AE091EB383C2001BEF35 /* EmojisGrouper.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -269,7 +269,7 @@
 			);
 			name = EmojiSwiper;
 			productName = EmojiSwiper;
-			productReference = FC0AA2721EB174160084F96B /* EmojiSwiper.app */;
+			productReference = FC0AA2721EB174160084F96B /* GroupEmojis.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FC0AA28E1EB174600084F96B /* EmojiSwiperKit */ = {
@@ -305,7 +305,7 @@
 			);
 			name = MyBoard;
 			productName = MyBoard;
-			productReference = FCA4AE091EB383C2001BEF35 /* MyBoard.appex */;
+			productReference = FCA4AE091EB383C2001BEF35 /* EmojisGrouper.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -579,7 +579,7 @@
 				INFOPLIST_FILE = EmojiSwiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ind.weiran3120102776.EmojiSwiper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GroupEmojis;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -594,7 +594,7 @@
 				INFOPLIST_FILE = EmojiSwiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ind.weiran3120102776.EmojiSwiper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GroupEmojis;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -658,7 +658,7 @@
 				INFOPLIST_FILE = MyBoard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ind.weiran3120102776.EmojiSwiper.MyBoard;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EmojisGrouper;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -672,7 +672,7 @@
 				INFOPLIST_FILE = MyBoard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ind.weiran3120102776.EmojiSwiper.MyBoard;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EmojisGrouper;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};

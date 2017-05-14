@@ -12,23 +12,25 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SB4-XU-4Mv" customClass="CollectionViewLabelCell" customModule="EmojiSwiperKit" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="62" height="40"/>
+            <rect key="frame" x="0.0" y="0.0" width="62" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="62" height="40"/>
+                <rect key="frame" x="0.0" y="0.0" width="62" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyg-Hs-Xhb">
-                        <rect key="frame" x="0.0" y="0.0" width="62" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="62" height="50"/>
                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="462-F9-vek"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="62" id="Cko-DX-kBP"/>
+                            <constraint firstAttribute="height" constant="50" id="WId-LU-VEJ"/>
                         </constraints>
                         <attributedString key="attributedText">
-                            <fragment content="Lg">
+                            <fragment content="你好">
                                 <attributes>
                                     <color key="NSColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <font key="NSFont" size="24" name="ChalkboardSE-Regular"/>
+                                    <font key="NSFont" size="30" name="HiraMaruProN-W4"/>
+                                    <font key="NSOriginalFont" size="34" name="PingFangSC-Regular"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>

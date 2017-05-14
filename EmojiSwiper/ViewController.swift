@@ -84,13 +84,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     }
     
     //
-    internal func addEmoji(imageData: Data) {
-        let orderNumber = emojiGroups[Int(selectedGroupOrderNumber!)].orderNumber
+    internal func addEmoji(imageData: Data, _ isNew: Bool = false) {
+        let orderNumber = isNew ? selectedGroupOrderNumber! : emojiGroups[Int(selectedGroupOrderNumber!)].orderNumber
         emojisDataModel.addEmojiToGroup(imageData: imageData, orderNumber: orderNumber)
     }
     
-    internal func addEmoji(name: String) {
-        let orderNumber = emojiGroups[Int(selectedGroupOrderNumber!)].orderNumber
+    internal func addEmoji(name: String, _ isNew: Bool = false) {
+        let orderNumber = isNew ? selectedGroupOrderNumber! : emojiGroups[Int(selectedGroupOrderNumber!)].orderNumber
         emojisDataModel.addEmojiToGroup(name: name, orderNumber: orderNumber)
     }
     
