@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FCA4AE081EB383C2001BEF35"
-               BuildableName = "MyBoard.appex"
+               BuildableName = "EmojisGrouper.appex"
                BlueprintName = "MyBoard"
                ReferencedContainer = "container:EmojiSwiper.xcodeproj">
             </BuildableReference>
@@ -30,7 +30,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FC0AA2711EB174160084F96B"
-               BuildableName = "EmojiSwiper.app"
+               BuildableName = "GroupEmojis.app"
                BlueprintName = "EmojiSwiper"
                ReferencedContainer = "container:EmojiSwiper.xcodeproj">
             </BuildableReference>
@@ -48,7 +48,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FCA4AE081EB383C2001BEF35"
-            BuildableName = "MyBoard.appex"
+            BuildableName = "EmojisGrouper.appex"
             BlueprintName = "MyBoard"
             ReferencedContainer = "container:EmojiSwiper.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FCA4AE081EB383C2001BEF35"
-            BuildableName = "MyBoard.appex"
+            BuildableName = "EmojisGrouper.appex"
             BlueprintName = "MyBoard"
             ReferencedContainer = "container:EmojiSwiper.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC0AA2711EB174160084F96B"
-            BuildableName = "EmojiSwiper.app"
+            BuildableName = "GroupEmojis.app"
             BlueprintName = "EmojiSwiper"
             ReferencedContainer = "container:EmojiSwiper.xcodeproj">
          </BuildableReference>

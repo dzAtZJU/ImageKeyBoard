@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FC0AA2711EB174160084F96B"
-               BuildableName = "EmojiSwiper.app"
+               BuildableName = "GroupEmojis.app"
                BlueprintName = "EmojiSwiper"
                ReferencedContainer = "container:EmojiSwiper.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC0AA2711EB174160084F96B"
-            BuildableName = "EmojiSwiper.app"
+            BuildableName = "GroupEmojis.app"
             BlueprintName = "EmojiSwiper"
             ReferencedContainer = "container:EmojiSwiper.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC0AA2711EB174160084F96B"
-            BuildableName = "EmojiSwiper.app"
+            BuildableName = "GroupEmojis.app"
             BlueprintName = "EmojiSwiper"
             ReferencedContainer = "container:EmojiSwiper.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC0AA2711EB174160084F96B"
-            BuildableName = "EmojiSwiper.app"
+            BuildableName = "GroupEmojis.app"
             BlueprintName = "EmojiSwiper"
             ReferencedContainer = "container:EmojiSwiper.xcodeproj">
          </BuildableReference>

@@ -15,7 +15,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     @IBOutlet weak var emojiGroupsView: UICollectionView!
     @IBAction func newGroup(_ sender: UIButton) {
         let index = emojiGroups.count
-        emojisDataModel.addGroup(orderNumber: Int16(index))
         selectedGroupOrderNumber = Int16(index)
         performSegue(withIdentifier: "pickPhoto", sender: sender)
     }
@@ -50,6 +49,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
         let groupOrderNumber: Int = emojiGroupsView.indexPath(for: cell)!.row
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "emojisGroupView") as! EmojisGroupViewController
         vc.emojisGroup = emojiGroups[groupOrderNumber]
+        selectedGroupOrderNumber = Int16(groupOrderNumber)
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -60,6 +60,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
     }
     var emojiGroupsByOrderNumber: [EmojiGroupMO] {
         return emojisDataModel.getAllGroups(sortBy: .orderNumber)
+    }
+    var newGroup: EmojiGroupMO {
+        return emojisDataModel.fetchGroupObject(orderNumber: selectedGroupOrderNumber!)!
     }
     
     //View -> Vontroller -> Model Information Flow
@@ -94,12 +97,27 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UICollec
         emojisDataModel.addEmojiToGroup(name: name, orderNumber: orderNumber)
     }
     
+    internal func addGroup() {
+        emojisDataModel.addGroup(orderNumber: selectedGroupOrderNumber!)
+    }
+    
     internal func deleteGroup() {
         if let groupOrderNumber = selectedGroupOrderNumber {
-            let orderNumber = emojiGroups[Int(groupOrderNumber)].orderNumber
-            emojisDataModel.deleteGroup(orderNumber: Int(orderNumber))
+            let group = emojiGroups[Int(groupOrderNumber)]
+            emojisDataModel.deleteGroup(group: group)
         }
         emojisDataModel.saveContext()
+    }
+    
+    internal func validateGroupName(_ name: String?) -> Bool {
+        if name != "" {
+            return true
+        }
+        return false
+    }
+    
+    internal func setNameOfNewGroup(name: String) {
+        emojisDataModel.modifyGroupName(orderNumber: selectedGroupOrderNumber!, newName: name)
     }
     
     internal func isEmptyGroup() {

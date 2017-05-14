@@ -49,6 +49,7 @@ class EmojisGroupViewController: UIViewController, UICollectionViewDataSource, U
                 emojisGroupView.reloadData()
         }
         if emojis.isEmpty {
+            vc.deleteGroup()
             self.groupNameField.text = "deleted"
             UIView.animate(withDuration: 1.5, animations: {
                 self.groupNameField.alpha = 0
@@ -101,15 +102,6 @@ class EmojisGroupViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if let emojis = emojisGroup.emojis {
-            if emojis.count == 0 {
-                vc.deleteGroup()
-            }
-        }
-        else {
-            vc.deleteGroup()
-
-        }
     }
     
     //<UICollectionViewDataSource>
@@ -140,8 +132,12 @@ class EmojisGroupViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        vc.emojisDataModel.modifyGroupName(group: emojisGroup, newName: groupNameField.text!)
+        
+        /*
         emojisGroup.tag = groupNameField.text
         emojisGroup.tagLatin = groupNameField.text?.mandrainToLatin()
+         */
     }
     
     //<UITextFieldDelegate>

@@ -191,6 +191,22 @@ public class EmojisDataModel {
         }
     }
     
+    public func modifyGroupName(orderNumber: Int16, newName: String) {
+        let group = fetchGroupObject(orderNumber: orderNumber)
+        modifyGroupName(group: group!, newName: newName)
+    }
+    
+    public func modifyGroupName(group: EmojiGroupMO, newName: String) {
+        group.tag = newName
+        group.tagLatin = newName.mandrainToLatin()
+        do {
+            try managedObjectContext.save()
+        }
+        catch {
+            fatalError("Failed to add group: \(error)")
+        }
+    }
+    
     public func moveEmojiToGroup(emojiName: String, orderNumber : Int16) {
         let emojiObject = fetchEmojiObject(emojiName)
         let group = fetchGroupObject(orderNumber: orderNumber)
@@ -220,6 +236,7 @@ public class EmojisDataModel {
     
     public func deleteGroup(group: EmojiGroupMO) {
         managedObjectContext.delete(group)
+        print("delete group \(group.orderNumber) \(group.tag)")
         do {
             try managedObjectContext.save()
         }
@@ -333,7 +350,7 @@ public class EmojisDataModel {
         }
     }
     
-    private func fetchGroupObject(orderNumber: Int16) -> EmojiGroupMO? {
+    public func fetchGroupObject(orderNumber: Int16) -> EmojiGroupMO? {
         let fectchRequest = NSFetchRequest<EmojiGroupMO>(entityName: "EmojiGroup")
         fectchRequest.predicate = NSPredicate(format: "orderNumber = %@", argumentArray:[orderNumber])
         do {
@@ -346,7 +363,7 @@ public class EmojisDataModel {
             return fetchedGroup[0]
         }
         catch {
-            fatalError("Failed to fetch emojis: \(error)")
+            fatalError("Failed to fetch group by orderNumber: \(error)")
         }
     }
     
